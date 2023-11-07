@@ -1,5 +1,7 @@
 package com.codegen.codegen.composants
 
+import kotlinx.serialization.Serializable
+
 /**
  * structure d'information qui représente un constructeur de classe.
  * le constructeur possède une liste de propriétés qu'il initialiserait.
@@ -11,9 +13,10 @@ package com.codegen.codegen.composants
  *
  * @author Clément Provencher
  */
+@Serializable
 data class Constructeur(
     val visibilite: Visibilite,
-    val proprietes: MutableList<Propriete> )
+    val proprietes: MutableList<Propriete> = mutableListOf() )
 {
     /**
      * Ajoute une propriété à la liste de propriétés du constructeur
