@@ -6,6 +6,7 @@ module com.codegen.codegen {
     requires com.dlsc.formsfx;
     requires net.synedra.validatorfx;
     requires org.kordamp.bootstrapfx.core;
+    requires kotlinx.serialization.core;
 
     opens com.codegen.codegen to javafx.fxml;
     exports com.codegen.codegen;
