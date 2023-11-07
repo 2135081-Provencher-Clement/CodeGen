@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Button?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.codegen.codegen.PrincipaleController">
+  <padding>
+    <Insets left="20.0" right="20.0" top="20.0" bottom="20.0"/>
+  </padding>
+
+  <MenuBar>
+    <Menu text="Projets">
+      <MenuItem text="Nouveau Projet"/>
+      <MenuItem text="Ouvrir Projet"/>
+    </Menu>
+    <Menu text="Classe">
+      <MenuItem text="Nouvelle Classe"/>
+      <MenuItem text="Ouvrir Classe"/>
+    </Menu>
+    <Menu text="Ajouter">
+      <MenuItem text="Ajouter Attribut"/>
+      <MenuItem text="Ajouter Méthode"/>
+    </Menu>
+  </MenuBar>
+
+  <HBox spacing="10">
+    <TreeView prefWidth="200">
+      <!-- Insérez ici l'arbre de navigation -->
+    </TreeView>
+    <BorderPane>
+      <!-- Insérez ici le formulaire de création de classe -->
+      <VBox alignment="CENTER" spacing="20">
+        <Label fx:id="welcomeText"/>
+        <Button text="Hello!" onAction="#onHelloButtonClick"/>
+      </VBox>
+    </BorderPane>
+  </HBox>
+</VBox>
