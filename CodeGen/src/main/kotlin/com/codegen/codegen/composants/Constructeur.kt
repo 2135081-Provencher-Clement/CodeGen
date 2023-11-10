@@ -15,8 +15,8 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class Constructeur(
-    val visibilite: Visibilite,
-    val proprietes: MutableList<Propriete> = mutableListOf() )
+    var visibilite: Visibilite,
+    val proprietes: MutableList<Propriete> )
 {
     /**
      * Ajoute une propriété à la liste de propriétés du constructeur

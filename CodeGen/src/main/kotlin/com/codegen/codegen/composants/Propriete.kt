@@ -14,9 +14,9 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class Propriete(
-    val visibilite : Visibilite,
-    val type : String,
-    val nom : String )
+    var visibilite : Visibilite,
+    var type : String,
+    var nom : String )
 {
 
 }

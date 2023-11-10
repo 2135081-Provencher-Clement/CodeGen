@@ -14,8 +14,8 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class Methode(
-    val visibilite : Visibilite,
-    val typeRetour : String,
+    var visibilite : Visibilite,
+    var typeRetour : String,
     val parametres : MutableList<Parametre> = mutableListOf() )
 {
     /**
