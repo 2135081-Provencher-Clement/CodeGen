@@ -12,7 +12,7 @@ package com.codegen.codegen.composants
  * @author Clément Provencher
  */
 data class Constructeur(
-    val visibilite: Visibilite,
+    var visibilite: Visibilite,
     val proprietes: MutableList<Propriete> )
 {
     /**
