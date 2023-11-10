@@ -12,8 +12,8 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class Parametre(
-    val type : String,
-    val nom : String )
+    var type : String,
+    var nom : String )
 {
 
 }
