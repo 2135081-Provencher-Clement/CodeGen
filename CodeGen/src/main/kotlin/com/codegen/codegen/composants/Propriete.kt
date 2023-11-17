@@ -1,5 +1,6 @@
 package com.codegen.codegen.composants
 
+import com.codegen.codegen.serializerPersonnalisee.composants.ProprieteSerializer
 import kotlinx.serialization.Serializable
 
 /**
@@ -12,11 +13,10 @@ import kotlinx.serialization.Serializable
  *
  * @author Clément Provencher
  */
-@Serializable
-data class Propriete(
-    var visibilite : Visibilite,
-    var type : String,
-    var nom : String )
+@Serializable(with = ProprieteSerializer::class)
+class Propriete()
 {
-
+    var visibilite : Visibilite = Visibilite.private
+    var type : String = ""
+    var nom : String = ""
 }
