@@ -18,12 +18,33 @@ import kotlinx.serialization.encoding.Encoder
  * @author Clément Provencher
  */
 object VisibiliteSerializer : KSerializer<Visibilite> {
+
+    /**
+     * Le descripteur, indique comment la visibilité à été encodée et comment décoder la visibilité
+     * Élémentaire lors du choix de quel sérialiseur à prendre lors d'une désérialisation
+     */
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("Visibilite", PrimitiveKind.STRING)
 
+    /**
+     * Sérialise une visibilité en format string
+     *
+     * @param encoder L'encodeur
+     * @param value La valeur de la visibilité à encoder
+     *
+     * @author Clément Provencher
+     */
     override fun serialize(encoder: Encoder, value: Visibilite) {
         encoder.encodeString(value.name)
     }
 
+    /**
+     * Désérialise une visibilité à partir d'un string
+     *
+     * @param decoder Le décodeur
+     * @return La visibilité sous forme d'enum
+     *
+     * @author Clément Provencher
+     */
     override fun deserialize(decoder: Decoder): Visibilite {
         return when (val value = decoder.decodeString()) {
             "public" -> Visibilite.public

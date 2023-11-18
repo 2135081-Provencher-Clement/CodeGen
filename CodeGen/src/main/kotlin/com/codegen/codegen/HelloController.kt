@@ -13,7 +13,9 @@ class HelloController {
 
     @FXML
     private fun onHelloButtonClick() {
-        var proprieteTest : Propriete = Propriete()
+        var jsonPropriete = "{\"visibilite\":\"private\",\"type\":\"\",\"nom\":\"\"}"
+
+        var proprieteTest : Propriete = Json.decodeFromString(jsonPropriete)
 
         welcomeText.text = Json.encodeToString(proprieteTest)
     }
