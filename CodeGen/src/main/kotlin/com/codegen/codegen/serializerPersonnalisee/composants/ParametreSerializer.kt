@@ -15,7 +15,7 @@ import kotlinx.serialization.encoding.*
  *
  * @author Clément Provencher
  */
-class ParametreSerializer : KSerializer<Parametre> {
+object ParametreSerializer : KSerializer<Parametre> {
 
     /**
      * Le descripteur, indique comment le paramètre à été encodée et comment décoder le paramètre
