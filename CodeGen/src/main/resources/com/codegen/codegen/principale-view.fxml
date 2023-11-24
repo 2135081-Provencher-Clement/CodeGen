@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * Vue principale pour l'application CodeGen
+ * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+ * Code partiellement généré par: OpenAi. (2023). ChatGPT (version 10 novembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
+-->
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
@@ -11,37 +16,54 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.codegen.codegen.PrincipaleController">
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.TreeItem?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.codegen.codegen.PrincipaleControleur">
   <padding>
-    <Insets left="20.0" right="20.0" top="20.0" bottom="20.0"/>
+    <Insets left="5.0" right="5.0" top="5.0" bottom="5.0"/>
   </padding>
 
+  <top>
   <MenuBar>
-    <Menu text="Projets">
-      <MenuItem text="Nouveau Projet"/>
-      <MenuItem text="Ouvrir Projet"/>
+    <Menu text="Projet">
+      <MenuItem text="Créer un projet"/>
+      <MenuItem text="Ouvrir un projet"/>
+      <MenuItem text="Exporter le projet"/>
+      <MenuItem text="Paramètres"/>
+      <SeparatorMenuItem />
+      <MenuItem fx:id="menuItemFermerFenetre" text="Fermer l'application"/>
     </Menu>
     <Menu text="Classe">
-      <MenuItem text="Nouvelle Classe"/>
-      <MenuItem text="Ouvrir Classe"/>
+      <MenuItem text="Renommer"/>
+      <MenuItem text="Ajouter une implémentation"/>
+      <MenuItem text="Ajouter un héritage"/>
+      <MenuItem text="Exporter la classe"/>
+      <MenuItem text="Supprimer la classe"/>
     </Menu>
     <Menu text="Ajouter">
+      <MenuItem text="Ajouter Classe"/>
       <MenuItem text="Ajouter Attribut"/>
-      <MenuItem text="Ajouter Méthode"/>
     </Menu>
   </MenuBar>
-
-  <HBox spacing="10">
-    <TreeView prefWidth="200">
-      <!-- Insérez ici l'arbre de navigation -->
-    </TreeView>
-    <BorderPane>
-      <!-- Insérez ici le formulaire de création de classe -->
-      <VBox alignment="CENTER" spacing="20">
-        <Label fx:id="welcomeText"/>
-        <Button text="Hello!" onAction="#onHelloButtonClick"/>
-      </VBox>
-    </BorderPane>
-  </HBox>
-</VBox>
+  </top>
+  <center>
+      <SplitPane id="splitPane" VBox.vgrow="ALWAYS" dividerPositions="0.3f" >
+          <!--Code emprunté. Source: https://stackoverflow.com/questions/11000098/how-can-i-avoid-a-splitpane-to-resize-one-of-the-panes-when-the-window-resizes [Consulté le 24 novembre 2023]-->
+        <TreeView SplitPane.resizableWithParent="false">
+          <!--Fin code emprunté-->
+          <TreeItem />
+          <TreeItem />
+        </TreeView>
+        <VBox>
+          <Label text="Test 3"/>
+          <Label text="Test 4"/>
+        </VBox>
+      </SplitPane>
+  </center>
+</BorderPane>
