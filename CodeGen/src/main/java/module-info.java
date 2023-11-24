@@ -7,7 +7,9 @@ module com.codegen.codegen {
     requires net.synedra.validatorfx;
     requires org.kordamp.bootstrapfx.core;
     requires kotlinx.serialization.core;
+    requires kotlinx.serialization.json;
 
     opens com.codegen.codegen to javafx.fxml;
     exports com.codegen.codegen;
+    exports com.codegen.codegen.serializerPersonnalisee.composants;
 }

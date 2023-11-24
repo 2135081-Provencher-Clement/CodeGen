@@ -1,5 +1,6 @@
 package com.codegen.codegen.composants
 
+import com.codegen.codegen.serializerPersonnalisee.composants.ConstructeurSerializer
 import kotlinx.serialization.Serializable
 
 /**
@@ -13,11 +14,42 @@ import kotlinx.serialization.Serializable
  *
  * @author Clément Provencher
  */
-@Serializable
-data class Constructeur(
-    var visibilite: Visibilite,
-    val proprietes: MutableList<Propriete> )
+@Serializable(with = ConstructeurSerializer::class)
+class Constructeur
 {
+
+    /**
+     * Constructeur du constructeur qui assigne tous les propriétés
+     *
+     * @param visibilite La visibilité du constructeur
+     * @param proprietes L'Ensemble des proprietes que le constructeur assigne
+     *
+     * @author Clément Provencher
+     */
+    constructor(visibilite: Visibilite, proprietes: List<Propriete>) {
+        this.visibilite = visibilite
+
+        proprietes.forEach { propriete -> AjouterPropriete(propriete) }
+    }
+
+    /**
+     * Constructeur du constructeur qui laisse les propriétés à leur valeur par défaut
+     */
+    constructor()
+
+    /**
+     * La visibilité du constructeur
+     */
+    var visibilite : Visibilite = Visibilite.public
+        set(value) {
+            field = value
+        }
+
+    /**
+     * L'ensemble des propriétés que le constructeur assigne
+     */
+    val proprietes: MutableList<Propriete> = mutableListOf()
+
     /**
      * Ajoute une propriété à la liste de propriétés du constructeur
      *
