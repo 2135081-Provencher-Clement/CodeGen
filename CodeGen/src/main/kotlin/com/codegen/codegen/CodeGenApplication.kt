@@ -24,10 +24,6 @@ class CodeGenApplication : Application() {
 
         stage.title = "CodeGen"
 
-//        stage.isMaximized = true
-//        stage.minWidth = 800.0
-//        stage.minHeight = 600.0
-
         stage.scene = scene
 
         stage.show()

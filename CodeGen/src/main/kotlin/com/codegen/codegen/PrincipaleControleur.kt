@@ -1,11 +1,5 @@
 package com.codegen.codegen
 
-/**
- *  Classe du contrôleur de l'application principale.
- *  @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
- *  Code partiellement généré par: OpenAi. (2023). ChatGPT (version 10 novembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
- */
-
 import javafx.application.Platform
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
@@ -15,26 +9,100 @@ import javafx.scene.control.*
 import javafx.stage.FileChooser
 import javafx.stage.Stage
 
+/**
+ *  Classe du contrôleur de l'interface principale.
+ *
+ *  @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+ *  Code partiellement généré par: OpenAi. (2023). ChatGPT (version 10 novembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
+ */
 class PrincipaleControleur {
+
+    /**
+     * Variables de l'application
+     *
+     * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+     */
     @FXML
     private lateinit var menuItemFermerFenetre: MenuItem
+    @FXML
+    private lateinit var menuItemCreerProjet: MenuItem
+    @FXML
+    private lateinit var menuItemOuvrirProjet: MenuItem
+    @FXML
+    private lateinit var menuItemExporterProjet: MenuItem
+    @FXML
+    private lateinit var menuItemParametres: MenuItem
+    @FXML
+    private lateinit var menuItemRenommerClasse: MenuItem
+    @FXML
+    private lateinit var menuItemAjouterImplementation: MenuItem
+    @FXML
+    private lateinit var menuItemAjouterHeritage: MenuItem
+    @FXML
+    private lateinit var menuItemExporterClasse: MenuItem
+    @FXML
+    private lateinit var menuItemSupprimerClasse: MenuItem
+    @FXML
+    private lateinit var menuItemAjouterClasse: MenuItem
+    @FXML
+    private lateinit var menuItemAjouterAttribut: MenuItem
 
+    /**
+     * Fonction d'initialisation des composants
+     *
+     * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+     */
     @FXML
     private fun initialize() {
-        // Associer l'action de fermeture à l'item du menu "Fermer la fenêtre"
         menuItemFermerFenetre.setOnAction {
             surFermerFenetre()
         }
+        menuItemCreerProjet.setOnAction {
+            surCreerProjet()
+        }
+        menuItemOuvrirProjet.setOnAction {
+            surOuvrirProjet()
+        }
+        menuItemParametres.setOnAction {
+            surParametres()
+        }
+        menuItemAjouterImplementation.setOnAction {
+            surAjouterImplementation()
+        }
+        menuItemAjouterHeritage.setOnAction {
+            surAjouterHeritage()
+        }
+//        menuItemExporterClasse.setOnAction {
+//            surExporterClasse()
+//        }
+//        menuItemExporterClasse.setOnAction {
+//            surExporterProjet()
+//        }
+        menuItemSupprimerClasse.setOnAction {
+            surSupprimerClasse()
+        }
+        menuItemAjouterClasse.setOnAction {
+            surAjouterClasse()
+        }
     }
 
+    /**
+     * Fonction pour fermer l'application
+     *
+     * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+     */
     @FXML
     private fun surFermerFenetre() {
         Platform.exit()
     }
 
+    /**
+     * Fonction pour créer un nouveau projet
+     *
+     * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+     */
     @FXML
     private fun surCreerProjet() {
-        // Code pour créer un nouveau projet
         val dialogue = TextInputDialog("Nom du projet")
         dialogue.headerText = "Créer un nouveau projet"
         dialogue.contentText = "Nom du projet :"
@@ -45,10 +113,13 @@ class PrincipaleControleur {
         }
     }
 
+    /**
+     * Fonction pour ouvrir un projet existant
+     *
+     * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+     */
     @FXML
     private fun surOuvrirProjet() {
-        // Code pour ouvrir un projet existant
-        // Exemple : Afficher une boîte de dialogue de sélection de projet
         val selecteurFichier = FileChooser()
         selecteurFichier.title = "Sélectionnez un projet"
         //val fichierSelectionne = selecteurFichier.showOpenDialog(texteBienvenue.scene.window)
@@ -57,10 +128,13 @@ class PrincipaleControleur {
         // Ouvrez le projet situé à cheminProjet
     }
 
+    /**
+     * Fonction pour ouvrir la fenêtre de paramètres
+     *
+     * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+     */
     @FXML
     private fun surParametres() {
-        // Ouvrir une fenêtre de paramètres
-        // Exemple : Afficher une fenêtre de paramètres personnalisée
         val stageParametres = Stage()
         val chargeurParametres = FXMLLoader(CodeGenApplication::class.java.getResource("vue-parametres.fxml"))
         val racineParametres = chargeurParametres.load<Parent>()
@@ -69,10 +143,13 @@ class PrincipaleControleur {
         stageParametres.show()
     }
 
+    /**
+     * Fonction pour ouvrir la fenêtre pour renommer une classe
+     *
+     * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+     */
     @FXML
     private fun surRenommer() {
-        // Code pour renommer une classe
-        // Exemple : Afficher une boîte de dialogue pour permettre à l'utilisateur de renommer une classe
         val dialogue = TextInputDialog("Nouveau nom de classe")
         dialogue.headerText = "Renommer la classe"
         dialogue.contentText = "Nouveau nom de classe :"
@@ -83,10 +160,13 @@ class PrincipaleControleur {
         }
     }
 
+    /**
+     * Fonction pour ouvrir la fenêtre pour implémenter un interface à la classe
+     *
+     * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+     */
     @FXML
     private fun surAjouterImplementation() {
-        // Code pour ajouter une implémentation à une classe
-        // Exemple : Afficher une boîte de dialogue pour permettre à l'utilisateur d'ajouter une implémentation
         val dialogue = TextInputDialog("Nom de l'interface à implémenter")
         dialogue.headerText = "Ajouter une implémentation"
         dialogue.contentText = "Nom de l'interface à implémenter :"
@@ -97,10 +177,13 @@ class PrincipaleControleur {
         }
     }
 
+    /**
+     * Fonction pour ouvrir la fenêtre pour ajouter un héritage à la classe
+     *
+     * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+     */
     @FXML
     private fun surAjouterHeritage() {
-        // Code pour ajouter un héritage à une classe
-        // Exemple : Afficher une boîte de dialogue pour permettre à l'utilisateur d'ajouter un héritage
         val dialogue = TextInputDialog("Nom de la classe parente")
         dialogue.headerText = "Ajouter un héritage"
         dialogue.contentText = "Nom de la classe parente :"
@@ -111,10 +194,13 @@ class PrincipaleControleur {
         }
     }
 
+    /**
+     * Fonction pour ouvrir la fenêtre d'exportation d'une classe
+     *
+     * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+     */
 //    @FXML
 //    private fun surExporterClasse() {
-//        // Code pour exporter une classe
-//        // Exemple : Afficher une boîte de dialogue pour permettre à l'utilisateur de choisir un emplacement d'export
 //        val selecteurFichier = FileChooser()
 //        selecteurFichier.title = "Choisissez un emplacement pour l'export de la classe"
 //        selecteurFichier.extensionFilters.add(
@@ -127,6 +213,11 @@ class PrincipaleControleur {
 //        }
 //    }
 
+    /**
+     * Fonction pour la suppression d'une classe
+     *
+     * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+     */
     @FXML
     private fun surSupprimerClasse() {
         // Code pour supprimer une classe
@@ -140,10 +231,13 @@ class PrincipaleControleur {
         }
     }
 
+    /**
+     * Fonction pour l'ouverture de la fenêtre de création d'une classe au projet
+     *
+     * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+     */
     @FXML
     private fun surAjouterClasse() {
-        // Code pour ajouter une nouvelle classe
-        // Exemple : Afficher une boîte de dialogue pour permettre à l'utilisateur d'ajouter une nouvelle classe
         val dialogue = TextInputDialog("Nom de la nouvelle classe")
         dialogue.headerText = "Ajouter une nouvelle classe"
         dialogue.contentText = "Nom de la nouvelle classe :"
@@ -154,10 +248,13 @@ class PrincipaleControleur {
         }
     }
 
+    /**
+     * Fonction pour l'ouverture de la fenêtre de création d'un interface au projet
+     *
+     * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+     */
     @FXML
     private fun surAjouterInterface() {
-        // Code pour ajouter une nouvelle interface
-        // Exemple : Afficher une boîte de dialogue pour permettre à l'utilisateur d'ajouter une nouvelle interface
         val dialogue = TextInputDialog("Nom de la nouvelle interface")
         dialogue.headerText = "Ajouter une nouvelle interface"
         dialogue.contentText = "Nom de la nouvelle interface :"
