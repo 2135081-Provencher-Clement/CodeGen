@@ -4,6 +4,8 @@ import com.codegen.codegen.composants.*
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerializationException
+import kotlinx.serialization.builtins.ArraySerializer
+import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.descriptors.buildClassSerialDescriptor
 import kotlinx.serialization.descriptors.listSerialDescriptor
@@ -33,15 +35,17 @@ object ConstructeurSerializer : KSerializer<Constructeur> {
     /**
      * Sérialise un constructeur sous forme de Json
      *
+     * Solution pour sérialisation de liste trouvée avec aide de ChatGPT (24 novembre 2023)
+     *
      * @param encoder l'encodeur
      * @param value Le constructeur à encoder en Json
      *
      * @author Clément Provencher
      */
     override fun serialize(encoder: Encoder, value: Constructeur) {
-        encoder.encodeStructure(MethodeSerializer.descriptor) {
-            encodeSerializableElement(MethodeSerializer.descriptor, 0, Visibilite.serializer(), value.visibilite)
-            TODO("Sais pas comment encoder une liste d'éléments")
+        encoder.encodeStructure(descriptor) {
+            encodeSerializableElement(descriptor, 0, Visibilite.serializer(), value.visibilite)
+            encodeSerializableElement(descriptor, 1, ListSerializer(Propriete.serializer()), value.proprietes)
         }
     }
 
@@ -54,15 +58,15 @@ object ConstructeurSerializer : KSerializer<Constructeur> {
      * @author Clément Provencher
      */
     override fun deserialize(decoder: Decoder): Constructeur {
-        return  decoder.decodeStructure(MethodeSerializer.descriptor) {
+        return  decoder.decodeStructure(descriptor) {
             var visibilite = Visibilite.private
             var proprietes = mutableListOf<Propriete>()
 
             // Pour chaque élément du Json, désérialise chaque propriété selon le sérializeur approprié
             while(true) {
-                when (val index = decodeElementIndex(MethodeSerializer.descriptor)) {
-                    0 -> visibilite = decodeSerializableElement(MethodeSerializer.descriptor, 0, Visibilite.serializer())
-                    1 -> TODO("Sais pas comment décoder une liste d'éléments")
+                when (val index = decodeElementIndex(descriptor)) {
+                    0 -> visibilite = decodeSerializableElement(descriptor, 0, Visibilite.serializer())
+                    1 -> proprietes = decodeSerializableElement(descriptor, 1, ListSerializer(Propriete.serializer())).toMutableList()
                     CompositeDecoder.DECODE_DONE -> break
                     else -> throw SerializationException("Index inconnu : $index")
                 }

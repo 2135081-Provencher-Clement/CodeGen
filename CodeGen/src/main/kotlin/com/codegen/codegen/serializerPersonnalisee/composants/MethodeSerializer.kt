@@ -6,6 +6,7 @@ import com.codegen.codegen.composants.Visibilite
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerializationException
+import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.descriptors.*
 import kotlinx.serialization.encoding.*
 
@@ -46,7 +47,7 @@ object MethodeSerializer : KSerializer<Methode> {
             encodeSerializableElement(descriptor, 0, Visibilite.serializer(), value.visibilite)
             encodeStringElement(descriptor, 1, value.typeRetour)
             encodeStringElement(descriptor, 2, value.nom)
-            TODO("Sais pas comment encoder une liste d'éléments")
+            encodeSerializableElement(descriptor, 3, ListSerializer(Parametre.serializer()), value.parametres)
         }
     }
 
@@ -71,7 +72,7 @@ object MethodeSerializer : KSerializer<Methode> {
                     0 -> visibilite = decodeSerializableElement(descriptor, 0, Visibilite.serializer())
                     1 -> typeRetour = decodeStringElement(descriptor, 1)
                     2 -> nom = decodeStringElement(descriptor, 2)
-                    3 -> TODO("Sais pas comment décoder une liste d'éléments")
+                    3 -> parametres = decodeSerializableElement(descriptor, 3, ListSerializer(Parametre.serializer())).toMutableList()
                     CompositeDecoder.DECODE_DONE -> break
                     else -> throw SerializationException("Index inconnu : $index")
                 }
