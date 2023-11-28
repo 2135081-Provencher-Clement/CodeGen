@@ -1,0 +1,25 @@
+<!-- Fichier creation-projet-view.fxml -->
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER"
+      spacing="20.0"
+      xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.codegen.codegen.CreationProjetController">
+
+  <Label fx:id="labelBienvenue" text="Bienvenue !" />
+
+  <Button fx:id="boutonNouveauProjet"
+          text="Nouveau Projet"
+          onAction="#onNouveauProjetClick" />
+
+  <Button fx:id="boutonOuvrirProjet"
+          text="Ouvrir un projet existant"
+          onAction="#onOuvrirProjetClick" />
+
+</VBox>
