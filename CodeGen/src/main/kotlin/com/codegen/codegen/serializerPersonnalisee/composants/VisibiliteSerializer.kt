@@ -10,7 +10,7 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
 /**
- * Serializer personnalisé pour la classe Visibilité
+ * Serializer personnalisé pour l'enum Visibilité
  * Transforme l'enum Visibilité en string, et vice-versa
  *
  * La grande majorité de cet objet à été généré avec l'aide de ChatGPT (le 10 novembre 2023)

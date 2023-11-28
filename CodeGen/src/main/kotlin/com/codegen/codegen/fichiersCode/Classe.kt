@@ -4,6 +4,7 @@ import com.codegen.codegen.composants.Constructeur
 import com.codegen.codegen.composants.Methode
 import com.codegen.codegen.composants.Propriete
 import com.codegen.codegen.composants.Visibilite
+import com.codegen.codegen.serializerPersonnalisee.fichiersCode.ClasseSerializer
 import kotlinx.serialization.Serializable
 
 /**
@@ -15,28 +16,31 @@ import kotlinx.serialization.Serializable
  *  une liste de constructeur
  *
  * @property visibilite la visibilite de la classe
+ * @property motCleeClasse le mot clée particulier de la classe (classique si pas de mot clée)
  * @property proprietes la liste des propriétés de la classe
  * @property methodes la liste des méthodes de la classe
  * @property constructeurs la liste des constructeurs de la classe
  *
  * @author Clément Provencher
  */
-@Serializable
+@Serializable(with = ClasseSerializer::class)
 class Classe
 {
     /**
      * Constructeur de la classe qui assigne tous les propriétés
      *
      * @param visibilite La visibilité de la classe
+     * @param motCleeClasse Le mot clée particulier de la classe (classique si pas de mot clée)
      * @param proprietes La liste des propriétés de la classe
      * @param methodes La liste des méthodes de la classe
      * @param constructeurs La liste des constructeurs de la classe
      *
      * @author Clément Provencher
      */
-    constructor(visibilite: Visibilite, proprietes: List<Propriete>, methodes: List<Methode>, constructeurs: List<Constructeur>)
+    constructor(visibilite: Visibilite, motCleeClasse: MotCleeClasse, proprietes: List<Propriete>, methodes: List<Methode>, constructeurs: List<Constructeur>)
     {
         this.visibilite = visibilite
+        this.motCleeClasse = motCleeClasse
 
         proprietes.forEach { propriete -> AjouterPropriete(propriete)}
         methodes.forEach { methode -> AjouterMethode(methode) }
@@ -48,10 +52,19 @@ class Classe
      */
     constructor()
 
+
     /**
      * La visibilité de la classe
      */
     var visibilite: Visibilite = Visibilite.public
+        set(value) {
+            field = value
+        }
+
+    /**
+     * Le mot clée particulier de la classe (classique si pas de mot clée)
+     */
+    var motCleeClasse: MotCleeClasse = MotCleeClasse.classique
         set(value) {
             field = value
         }
