@@ -93,7 +93,7 @@ class PrincipaleControleur {
     }
 
     /**
-     * Fonction pour initialiser le nom du projet
+     * Fonction pour initialiser le nom du projet dans l'interface principale du nouveau projet
      *
      * @author Francis Payan - 2131102@etudiant.cegepvicto.ca
      *

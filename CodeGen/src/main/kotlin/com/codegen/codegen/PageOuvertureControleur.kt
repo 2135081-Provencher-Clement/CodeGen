@@ -1,8 +1,8 @@
-// Fichier CreationProjetController.kt
+// Fichier PageOuvertureControleur.kt
 
 /*
    * Code partiellement généré par: OpenAi. (2023). ChatGPT (version 10 novembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
-   * Auteur: Francis Payan
+   * Auteur: Francis Payan - 2131102@etudiant.cegepvicto.ca
  */
 
 package com.codegen.codegen
@@ -26,11 +26,27 @@ class CreationProjetController {
     @FXML
     private lateinit var boutonOuvrirProjet: Button
 
+    /**
+     * Affiche un message de bienvenue dans la page d'ouverture de l'application
+     *
+     * @author Francis Payan - 2131102@etudiant.cegepvicto.ca
+     *
+     * @param nomProjet Le nom du projet à afficher
+     */
     @FXML
     fun initialize() {
         labelBienvenue.text = "Bienvenue dans CodeGen !"
     }
 
+    /**
+     * Cette méthode est pour le bouton "Créer un nouveau projet",
+     * elle affiche une boîte de dialogue pour entrer le nom du projet et charge la vue du nouveau projet
+     * avec le nom du projet entré en paramètre.
+     *
+     * @author Francis Payan - 2131102@etudiant.cegepvicto.ca
+     *
+     * @param nomProjet Le nom du projet à afficher
+     */
     @FXML
     private fun onNouveauProjetClick() {
         val dialog = TextInputDialog()
@@ -56,7 +72,7 @@ class CreationProjetController {
     }
 
 
-    // Cette méthode est pour le bouton "Ouvrir un projet existant", vide pour l'instant
+    // Cette méthode est pour le bouton "Ouvrir un projet existant", à compléter...
     @FXML
     private fun onOuvrirProjetClick() {
         // Logique pour ouvrir un projet existant
