@@ -1,7 +1,8 @@
 // Fichier CreationProjetController.kt
 
 /*
-    codé en partie à l'aide de Chat-GPT
+   * Code partiellement généré par: OpenAi. (2023). ChatGPT (version 10 novembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
+   * Auteur: Francis Payan
  */
 
 package com.codegen.codegen
@@ -41,7 +42,7 @@ class CreationProjetController {
 
         result.ifPresent { nomProjet ->
             // Charger la vue du nouveau projet
-            val fxmlLoader = FXMLLoader(CreationProjet::class.java.getResource("principale-view.fxml"))
+            val fxmlLoader = FXMLLoader(CodeGenApplication::class.java.getResource("principale-view.fxml"))
             val nouvelleScene = Scene(fxmlLoader.load(), 800.0, 800.0)
 
             // Récupérer le contrôleur et passer le nom du projet
