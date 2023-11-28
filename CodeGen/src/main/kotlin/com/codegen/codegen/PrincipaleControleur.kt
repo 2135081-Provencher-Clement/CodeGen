@@ -1,3 +1,5 @@
+// Fichier PrincipaleControleur.kt
+
 package com.codegen.codegen
 
 import javafx.application.Platform
@@ -46,6 +48,10 @@ class PrincipaleControleur {
     private lateinit var menuItemAjouterClasse: MenuItem
     @FXML
     private lateinit var menuItemAjouterAttribut: MenuItem
+    @FXML
+    private lateinit var labelNomProjet: Label
+
+
 
     /**
      * Fonction d'initialisation des composants
@@ -85,6 +91,18 @@ class PrincipaleControleur {
             surAjouterClasse()
         }
     }
+
+    /**
+     * Fonction pour initialiser le nom du projet dans l'interface principale du nouveau projet
+     *
+     * @author Francis Payan - 2131102@etudiant.cegepvicto.ca
+     *
+     * @param nomDuProjet Le nom du projet
+     */
+    fun initialiserNomDuProjet(nomDuProjet: String) {
+        labelNomProjet.text = "Projet: $nomDuProjet"
+    }
+
 
     /**
      * Fonction pour fermer l'application
