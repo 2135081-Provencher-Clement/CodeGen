@@ -1,0 +1,13 @@
+/* Fichier styles.css */
+
+.root {
+    -fx-background-image: url('images/fond_codegen4.png');
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+}
+
+#boutonNouveauProjet, #boutonOuvrirProjet {
+    -fx-padding: 10px 20px 10px 20px;
+    -fx-margin-top: 20px;
+}

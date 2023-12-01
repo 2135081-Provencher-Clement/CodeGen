@@ -31,6 +31,7 @@ object MethodeSerializer : KSerializer<Methode> {
         element("typeRetour", PrimitiveSerialDescriptor("typeRetour", PrimitiveKind.STRING))
         element("nom", PrimitiveSerialDescriptor("nom", PrimitiveKind.STRING))
         element("parametres", listSerialDescriptor(Parametre.serializer().descriptor)) // Généré par ChatGPT (Le 18 novembre 2023)
+        element("virtuelle", PrimitiveSerialDescriptor("virtuelle", PrimitiveKind.BOOLEAN))
     }
 
 
@@ -48,6 +49,7 @@ object MethodeSerializer : KSerializer<Methode> {
             encodeStringElement(descriptor, 1, value.typeRetour)
             encodeStringElement(descriptor, 2, value.nom)
             encodeSerializableElement(descriptor, 3, ListSerializer(Parametre.serializer()), value.parametres)
+            encodeBooleanElement(descriptor, 4, value.virtuelle)
         }
     }
 
@@ -65,6 +67,7 @@ object MethodeSerializer : KSerializer<Methode> {
             var typeRetour = ""
             var nom = ""
             var parametres = mutableListOf<Parametre>()
+            var virtuelle = false
 
             // Pour chaque élément du Json, désérialise chaque propriété selon le sérializeur approprié
             while(true) {
@@ -73,12 +76,13 @@ object MethodeSerializer : KSerializer<Methode> {
                     1 -> typeRetour = decodeStringElement(descriptor, 1)
                     2 -> nom = decodeStringElement(descriptor, 2)
                     3 -> parametres = decodeSerializableElement(descriptor, 3, ListSerializer(Parametre.serializer())).toMutableList()
+                    4 -> virtuelle = decodeBooleanElement(descriptor, 4)
                     CompositeDecoder.DECODE_DONE -> break
                     else -> throw SerializationException("Index inconnu : $index")
                 }
             }
 
-            Methode(visibilite,typeRetour,nom,parametres)
+            Methode( visibilite, typeRetour, nom, parametres, virtuelle)
         }
     }
 
