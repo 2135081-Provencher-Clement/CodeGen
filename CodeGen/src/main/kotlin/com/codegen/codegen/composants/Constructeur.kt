@@ -54,6 +54,8 @@ class Constructeur
      * Ajoute une propriété à la liste de propriétés du constructeur
      *
      * @param propriete la propriété à ajouter
+     *
+     * @author Clément Provencher
      */
     fun AjouterPropriete(propriete: Propriete) {
         proprietes.add(propriete)
