@@ -2,8 +2,10 @@ package com.codegen.codegen
 
 /**
  *  Classe de l'application de CodeGen
+ *
  *  @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
  *  Code partiellement généré par: OpenAi. (2023). ChatGPT (version 10 novembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
+ *  Code partiellement généré par: Microsoft. (2023). Bing (version 28 novembre 2023) [Modèle massif de langage]. https://bing.com/chat
  */
 import javafx.application.Application
 import javafx.fxml.FXMLLoader
@@ -16,17 +18,35 @@ import javafx.stage.Stage
 import javafx.stage.StageStyle
 
 class CodeGenApplication : Application() {
-    override fun start(stage: Stage) {
-        val fxmlLoader = FXMLLoader(CodeGenApplication::class.java.getResource("principale-view.fxml"))
-        val root = fxmlLoader.load<BorderPane>()
+    override fun start(stagePrincipal: Stage) {
 
-        val scene = Scene(root)
+        /**
+         * Création de la fenêtre principale
+         *
+         * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+         * Code partiellement généré par: Microsoft. (2023). Bing (version 28 novembre 2023) [Modèle massif de langage]. https://bing.com/chat
+         */
+        val chargeurFXMLInterfacePrincipale = FXMLLoader(CodeGenApplication::class.java.getResource("principale-view.fxml"))
+        val racinePrincipale = chargeurFXMLInterfacePrincipale.load<BorderPane>()
+        val scenePrincipale = Scene(racinePrincipale)
+        stagePrincipal.title = "CodeGen"
+        stagePrincipal.scene = scenePrincipale
+        stagePrincipal.show()
 
-        stage.title = "CodeGen"
-
-        stage.scene = scene
-
-        stage.show()
+        /**
+         * Création de la fenêtre d'ouverture de projet
+         *
+         * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+         * Code partiellement généré par: Microsoft. (2023). Bing (version 28 novembre 2023) [Modèle massif de langage]. https://bing.com/chat
+         */
+        val chargeurFXMLPageOuverture = FXMLLoader(CodeGenApplication::class.java.getResource("creation-projet-view.fxml"))
+        val racineOuverture = chargeurFXMLPageOuverture.load<VBox>()
+        val stageOuverture = Stage()
+        val sceneOuverture = Scene(racineOuverture, 800.0, 800.0)
+        sceneOuverture.stylesheets.add("styles.css")
+        stageOuverture.title = "Gestion de Projets"
+        stageOuverture.scene = sceneOuverture
+        stageOuverture.show()
     }
 }
 

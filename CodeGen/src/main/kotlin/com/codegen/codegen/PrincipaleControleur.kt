@@ -45,7 +45,7 @@ class PrincipaleControleur {
     @FXML
     private lateinit var menuItemAjouterClasse: MenuItem
     @FXML
-    private lateinit var menuItemAjouterAttribut: MenuItem
+    private lateinit var menuItemAjouterInterface: MenuItem
 
     /**
      * Fonction d'initialisation des composants
@@ -82,6 +82,9 @@ class PrincipaleControleur {
             surSupprimerClasse()
         }
         menuItemAjouterClasse.setOnAction {
+            surAjouterClasse()
+        }
+        menuItemAjouterInterface.setOnAction {
             surAjouterClasse()
         }
     }

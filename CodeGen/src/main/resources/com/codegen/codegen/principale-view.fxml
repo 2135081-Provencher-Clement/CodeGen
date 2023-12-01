@@ -49,7 +49,7 @@
     </Menu>
     <Menu text="Ajouter">
       <MenuItem fx:id="menuItemAjouterClasse" text="Ajouter Classe"/>
-      <MenuItem fx:id="menuItemAjouterAttribut" text="Ajouter Attribut"/>
+      <MenuItem fx:id="menuItemAjouterInterface" text="Ajouter Interface"/>
     </Menu>
   </MenuBar>
   </top>
