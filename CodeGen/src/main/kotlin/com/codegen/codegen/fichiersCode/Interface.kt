@@ -54,7 +54,7 @@ class Interface {
     var visibilite: Visibilite = Visibilite.public
         set(value) {
             if(value == Visibilite.private)
-                throw InvalidParameterException("Une classe ne peut pas être privée")
+                throw InvalidParameterException("Une interface ne peut pas être privée")
 
             field = value
         }
