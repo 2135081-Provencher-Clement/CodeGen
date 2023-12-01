@@ -6,13 +6,14 @@ import com.codegen.codegen.composants.Propriete
 import com.codegen.codegen.composants.Visibilite
 import com.codegen.codegen.serializerPersonnalisee.fichiersCode.ClasseSerializer
 import kotlinx.serialization.Serializable
+import java.security.InvalidParameterException
 
 /**
  * structure d'information pour une classe
  * une classe contient :
  *  une visibilité
- *  une liste de propriété,
- *  une liste de méthodes et
+ *  une liste de propriété
+ *  une liste de méthodes
  *  une liste de constructeur
  *
  * @property visibilite la visibilite de la classe
@@ -55,9 +56,14 @@ class Classe
 
     /**
      * La visibilité de la classe
+     *
+     * Une classe ne peut pas être privée, une exception sera lançé si on tente de la mettre privée
      */
     var visibilite: Visibilite = Visibilite.public
         set(value) {
+            if(value == Visibilite.private)
+                throw InvalidParameterException("Une classe ne peut pas être privée")
+
             field = value
         }
 
