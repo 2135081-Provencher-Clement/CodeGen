@@ -12,4 +12,5 @@ module com.codegen.codegen {
     opens com.codegen.codegen to javafx.fxml;
     exports com.codegen.codegen;
     exports com.codegen.codegen.serializerPersonnalisee.composants;
+    exports com.codegen.codegen.serializerPersonnalisee.fichiersCode;
 }

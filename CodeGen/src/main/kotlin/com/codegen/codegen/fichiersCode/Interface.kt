@@ -3,6 +3,7 @@ package com.codegen.codegen.fichiersCode
 import com.codegen.codegen.composants.Methode
 import com.codegen.codegen.composants.Propriete
 import com.codegen.codegen.composants.Visibilite
+import com.codegen.codegen.serializerPersonnalisee.fichiersCode.InterfaceSerializer
 import kotlinx.serialization.Serializable
 import java.security.InvalidParameterException
 
@@ -19,7 +20,7 @@ import java.security.InvalidParameterException
  *
  * @author Clément Provencher
  */
-@Serializable
+@Serializable(with = InterfaceSerializer::class)
 class Interface {
 
     /**
