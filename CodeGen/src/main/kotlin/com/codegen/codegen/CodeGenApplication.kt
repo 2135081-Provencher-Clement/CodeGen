@@ -1,12 +1,6 @@
 package com.codegen.codegen
 
-/**
- *  Classe de l'application de CodeGen
- *
- *  @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
- *  Code partiellement généré par: OpenAi. (2023). ChatGPT (version 10 novembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
- *  Code partiellement généré par: Microsoft. (2023). Bing (version 28 novembre 2023) [Modèle massif de langage]. https://bing.com/chat
- */
+
 import javafx.application.Application
 import javafx.fxml.FXMLLoader
 import javafx.scene.Scene
@@ -17,6 +11,13 @@ import javafx.stage.Screen
 import javafx.stage.Stage
 import javafx.stage.StageStyle
 
+/**
+ *  Classe de l'application de CodeGen
+ *
+ *  @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+ *  Code partiellement généré par: OpenAi. (2023). ChatGPT (version 10 novembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
+ *  Code partiellement généré par: Microsoft. (2023). Bing (version 28 novembre 2023) [Modèle massif de langage]. https://bing.com/chat
+ */
 class CodeGenApplication : Application() {
     override fun start(stagePrincipal: Stage) {
 
