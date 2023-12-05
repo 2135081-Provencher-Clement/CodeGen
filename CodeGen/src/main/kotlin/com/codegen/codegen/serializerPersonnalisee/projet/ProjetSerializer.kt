@@ -1,22 +1,13 @@
 package com.codegen.codegen.serializerPersonnalisee.projet
 
-import com.codegen.codegen.composants.Constructeur
-import com.codegen.codegen.composants.Methode
-import com.codegen.codegen.composants.Propriete
-import com.codegen.codegen.composants.Visibilite
 import com.codegen.codegen.fichiersCode.Classe
 import com.codegen.codegen.fichiersCode.Interface
-import com.codegen.codegen.fichiersCode.MotCleeClasse
 import com.codegen.codegen.projet.Projet
-import com.codegen.codegen.serializerPersonnalisee.fichiersCode.ClasseSerializer
-import com.codegen.codegen.serializerPersonnalisee.fichiersCode.InterfaceSerializer
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.builtins.ListSerializer
-import kotlinx.serialization.descriptors.SerialDescriptor
-import kotlinx.serialization.descriptors.buildClassSerialDescriptor
-import kotlinx.serialization.descriptors.listSerialDescriptor
+import kotlinx.serialization.descriptors.*
 import kotlinx.serialization.encoding.*
 
 /**
@@ -36,6 +27,7 @@ object ProjetSerializer : KSerializer<Projet> {
     @OptIn(ExperimentalSerializationApi::class)
     override val descriptor: SerialDescriptor = buildClassSerialDescriptor("com.codegen.codegen.projet.Projet")
     {
+        element("nom", PrimitiveSerialDescriptor("nom", PrimitiveKind.STRING))
         element("classes", listSerialDescriptor(Classe.serializer().descriptor))
         element("interfaces", listSerialDescriptor(Interface.serializer().descriptor))
     }
@@ -50,8 +42,9 @@ object ProjetSerializer : KSerializer<Projet> {
      */
     override fun serialize(encoder: Encoder, value: Projet) {
         encoder.encodeStructure(descriptor) {
-            encodeSerializableElement(descriptor, 0, ListSerializer(Classe.serializer()), value.classes)
-            encodeSerializableElement(descriptor, 1, ListSerializer(Interface.serializer()), value.interfaces)
+            encodeStringElement(descriptor, 0, value.nom)
+            encodeSerializableElement(descriptor, 1, ListSerializer(Classe.serializer()), value.classes)
+            encodeSerializableElement(descriptor, 2, ListSerializer(Interface.serializer()), value.interfaces)
         }
     }
 
@@ -65,20 +58,22 @@ object ProjetSerializer : KSerializer<Projet> {
      */
     override fun deserialize(decoder: Decoder): Projet {
         return  decoder.decodeStructure(descriptor) {
+            var nom = ""
             var classes = mutableListOf<Classe>()
             var interfaces = mutableListOf<Interface>()
 
             // Pour chaque élément du Json, désérialise chaque propriété selon le sérializeur approprié
             while(true) {
                 when (val index = decodeElementIndex(descriptor)) {
-                    0 -> classes = decodeSerializableElement(descriptor, 0, ListSerializer(Classe.serializer())).toMutableList()
-                    1 -> interfaces = decodeSerializableElement(descriptor, 1, ListSerializer(Interface.serializer())).toMutableList()
+                    0 -> nom = decodeStringElement(descriptor, 0)
+                    1 -> classes = decodeSerializableElement(descriptor, 1, ListSerializer(Classe.serializer())).toMutableList()
+                    2 -> interfaces = decodeSerializableElement(descriptor, 2, ListSerializer(Interface.serializer())).toMutableList()
                     CompositeDecoder.DECODE_DONE -> break
                     else -> throw SerializationException("Index inconnu : $index")
                 }
             }
 
-            Projet(classes, interfaces)
+            Projet(nom, classes, interfaces)
         }
     }
 }

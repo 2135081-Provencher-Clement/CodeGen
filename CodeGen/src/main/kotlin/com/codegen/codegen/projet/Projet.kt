@@ -30,8 +30,10 @@ class Projet {
      *
      * @author Clément Provencher
      */
-    constructor(classes : List<Classe>, interfaces : List<Interface>)
+    constructor(nom : String, classes : List<Classe>, interfaces : List<Interface>)
     {
+        this.nom = nom
+
         classes.forEach { classe -> AjouterClasse(classe) }
         interfaces.forEach { interfacee -> AjouterInterface(interfacee) }
     }
@@ -40,6 +42,11 @@ class Projet {
      * Constructeur du projet qui laisse les propriétés à leur valeur par défaut
      */
     constructor()
+
+    var nom : String = ""
+        set(value) {
+            field = value
+        }
 
     /**
      * Liste des classes du projet
