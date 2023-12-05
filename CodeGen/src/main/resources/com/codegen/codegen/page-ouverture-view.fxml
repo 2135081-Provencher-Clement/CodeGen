@@ -1,10 +1,9 @@
-<!--
-
-Fichier creation-projet-view.fxml
-
--->
-
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Fichier page-ouverture-view.fxml
+  auteur : Francis Payan - 2131102@etudiant.cegepvicto.ca
+-->
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -14,16 +13,16 @@ Fichier creation-projet-view.fxml
       spacing="20.0"
       xmlns="http://javafx.com/javafx/8"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.codegen.codegen.CreationProjetController">
+      fx:controller="com.codegen.codegen.PageOuvertureControleur">
 
-  <Label fx:id="labelBienvenue" text="Bienvenue !" />
+  <Label fx:id="etiquetteBienvenue" text="Bienvenue !" />
 
   <Button fx:id="boutonNouveauProjet"
           text="Nouveau Projet"
-          onAction="#onNouveauProjetClick" />
+          onAction="#cliquerSurNouveauProjet" />
 
   <Button fx:id="boutonOuvrirProjet"
           text="Ouvrir un projet existant"
-          onAction="#onOuvrirProjetClick" />
+          onAction="#cliquerSurOuvrirProjet" />
 
 </VBox>
