@@ -129,7 +129,6 @@ class PrincipaleControleur {
         val resultat = dialogue.showAndWait()
         if (resultat.isPresent) {
             val nomProjet = resultat.get()
-            // Créez le projet avec le nom nomProjet
         }
     }
 
