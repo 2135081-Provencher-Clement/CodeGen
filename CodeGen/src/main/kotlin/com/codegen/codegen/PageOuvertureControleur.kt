@@ -1,10 +1,5 @@
 // Fichier PageOuvertureControleur.kt
 
-/*
-   * Code partiellement généré par: OpenAi. (2023). ChatGPT (version 10 novembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
-   * Auteur: Francis Payan - 2131102@etudiant.cegepvicto.ca
- */
-
 package com.codegen.codegen
 
 import javafx.fxml.FXML
@@ -15,6 +10,11 @@ import javafx.scene.control.Label
 import javafx.scene.control.TextInputDialog
 import javafx.stage.Stage
 
+/*
+   * Classe du controleur de la page d'ouverture
+   * Code partiellement généré par: OpenAi. (2023). ChatGPT (version 10 novembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
+   * Auteur: Francis Payan - 2131102@etudiant.cegepvicto.ca
+ */
 class PageOuvertureControleur {
 
     @FXML
