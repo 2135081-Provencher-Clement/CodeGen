@@ -49,7 +49,7 @@ class PrincipaleControleur {
     @FXML
     private lateinit var menuItemAjouterAttribut: MenuItem
     @FXML
-    private lateinit var labelNomProjet: Label
+    private lateinit var etiquetteNomProjet: Label
 
 
     /**
@@ -102,7 +102,7 @@ class PrincipaleControleur {
      * @param nomDuProjet Le nom du projet
      */
     fun initialiserNomDuProjet(nomDuProjet: String) {
-        labelNomProjet.text = "Projet: $nomDuProjet"
+        etiquetteNomProjet.text = "Projet: $nomDuProjet"
     }
 
 

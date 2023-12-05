@@ -1,10 +1,5 @@
 // Fichier PageOuvertureControleur.kt
 
-/*
-   * Code partiellement généré par: OpenAi. (2023). ChatGPT (version 10 novembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
-   * Auteur: Francis Payan - 2131102@etudiant.cegepvicto.ca
- */
-
 package com.codegen.codegen
 
 import javafx.fxml.FXML
@@ -15,10 +10,15 @@ import javafx.scene.control.Label
 import javafx.scene.control.TextInputDialog
 import javafx.stage.Stage
 
-class CreationProjetController {
+/*
+   * Classe du controleur de la page d'ouverture
+   * Code partiellement généré par: OpenAi. (2023). ChatGPT (version 10 novembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
+   * Auteur: Francis Payan - 2131102@etudiant.cegepvicto.ca
+ */
+class PageOuvertureControleur {
 
     @FXML
-    private lateinit var labelBienvenue: Label
+    private lateinit var etiquetteBienvenue: Label
 
     @FXML
     private lateinit var boutonNouveauProjet: Button
@@ -27,55 +27,46 @@ class CreationProjetController {
     private lateinit var boutonOuvrirProjet: Button
 
     /**
-     * Affiche un message de bienvenue dans la page d'ouverture de l'application
-     *
-     * @author Francis Payan - 2131102@etudiant.cegepvicto.ca
-     *
-     * @param nomProjet Le nom du projet à afficher
+     * Affiche un message de bienvenue dans la page d'ouverture de l'application.
      */
     @FXML
-    fun initialize() {
-        labelBienvenue.text = "Bienvenue dans CodeGen !"
+    fun initialiser() {
+        etiquetteBienvenue.text = "Bienvenue dans CodeGen !"
     }
 
     /**
-     * Cette méthode est pour le bouton "Créer un nouveau projet",
-     * elle affiche une boîte de dialogue pour entrer le nom du projet et charge la vue du nouveau projet
-     * avec le nom du projet entré en paramètre.
-     *
-     * @author Francis Payan - 2131102@etudiant.cegepvicto.ca
-     *
-     * @param nomProjet Le nom du projet à afficher
+     * Gère l'action de cliquer sur le bouton "Nouveau Projet".
+     * Affiche une boîte de dialogue pour entrer le nom du projet et charge la vue du nouveau projet.
      */
     @FXML
-    private fun onNouveauProjetClick() {
-        val dialog = TextInputDialog()
-        dialog.title = "Nouveau Projet"
-        dialog.headerText = "Créer un nouveau projet"
-        dialog.contentText = "Entrez le nom du projet :"
+    private fun cliquerSurNouveauProjet() {
+        val dialogue = TextInputDialog()
+        dialogue.title = "Nouveau Projet"
+        dialogue.headerText = "Créer un nouveau projet"
+        dialogue.contentText = "Entrez le nom du projet :"
 
-        val result = dialog.showAndWait()
+        val resultat = dialogue.showAndWait()
 
-        result.ifPresent { nomProjet ->
+        resultat.ifPresent { nomProjet ->
             // Charger la vue du nouveau projet
-            val fxmlLoader = FXMLLoader(CodeGenApplication::class.java.getResource("principale-view.fxml"))
-            val nouvelleScene = Scene(fxmlLoader.load(), 800.0, 800.0)
+            val chargeurFXML = FXMLLoader(CodeGenApplication::class.java.getResource("principale-view.fxml"))
+            val nouvelleScene = Scene(chargeurFXML.load(), 800.0, 800.0)
 
             // Récupérer le contrôleur et passer le nom du projet
-            val controller = fxmlLoader.getController<PrincipaleControleur>()
-            controller.initialiserNomDuProjet(nomProjet)
+            val controleur = chargeurFXML.getController<PrincipaleControleur>()
+            controleur.initialiserNomDuProjet(nomProjet)
 
             // Afficher la nouvelle vue
-            val stageActuel = boutonNouveauProjet.scene.window as Stage
-            stageActuel.scene = nouvelleScene
+            val sceneActuelle = boutonNouveauProjet.scene.window as Stage
+            sceneActuelle.scene = nouvelleScene
         }
     }
 
-
-    // Cette méthode est pour le bouton "Ouvrir un projet existant", à compléter...
+    /**
+     * Gère l'action de cliquer sur le bouton "Ouvrir un projet existant".
+     */
     @FXML
-    private fun onOuvrirProjetClick() {
+    private fun cliquerSurOuvrirProjet() {
         // Logique pour ouvrir un projet existant
     }
 }
-
