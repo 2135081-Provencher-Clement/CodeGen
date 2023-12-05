@@ -52,7 +52,6 @@ class PrincipaleControleur {
     private lateinit var etiquetteNomProjet: Label
 
 
-
     /**
      * Fonction d'initialisation des composants
      *
@@ -90,6 +89,9 @@ class PrincipaleControleur {
         menuItemAjouterClasse.setOnAction {
             surAjouterClasse()
         }
+//        menuItemAjouterInterface.setOnAction {
+//            surAjouterClasse()
+//        }
     }
 
     /**
@@ -127,7 +129,6 @@ class PrincipaleControleur {
         val resultat = dialogue.showAndWait()
         if (resultat.isPresent) {
             val nomProjet = resultat.get()
-            // Créez le projet avec le nom nomProjet
         }
     }
 
