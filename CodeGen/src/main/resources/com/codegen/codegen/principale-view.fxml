@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
- * Vue principale pour l'application CodeGen
- *
- * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
- * Code partiellement généré par: OpenAi. (2023). ChatGPT (version 10 novembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
--->
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
@@ -24,7 +19,12 @@
 <?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.TreeItem?>
 
-
+<!--
+ * Vue principale pour l'application CodeGen
+ *
+ * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+ * Code partiellement généré par: OpenAi. (2023). ChatGPT (version 10 novembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
+-->
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.codegen.codegen.PrincipaleControleur">
   <padding>
