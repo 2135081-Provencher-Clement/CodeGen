@@ -24,13 +24,15 @@ class Methode
      * @param typeRetour Le type de retour de la méthode
      * @param nom Le nom de la méthode
      * @param parametres Les paramètres de la méthode
+     * @param virtuel Si la méthode est virtuelle ou non
      *
      * @author Clément Provencher
      */
-    constructor(visibilite: Visibilite, typeRetour: String, nom: String, parametres: List<Parametre>) {
+    constructor(visibilite: Visibilite, typeRetour: String, nom: String, parametres: List<Parametre>, virtuelle : Boolean) {
         this.visibilite = visibilite
         this.typeRetour = typeRetour
         this.nom = nom
+        this.virtuelle = virtuelle
 
         parametres.forEach { parametre -> AjouterParametre(parametre) }
     }
@@ -70,6 +72,11 @@ class Methode
      * Les paramètres de la méthode
      */
     val parametres : MutableList<Parametre> = mutableListOf()
+
+    /**
+     * Indique si la méthode est virtuelle
+     */
+    var virtuelle : Boolean = false
 
     /**
      * Ajoute un paramètre à la liste de paramètres de la méthode

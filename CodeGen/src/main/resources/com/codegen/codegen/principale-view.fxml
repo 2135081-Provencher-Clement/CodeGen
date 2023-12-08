@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
- * Vue principale pour l'application CodeGen
- *
- * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
- * Code partiellement généré par: OpenAi. (2023). ChatGPT (version 10 novembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
--->
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
@@ -24,6 +19,12 @@
 <?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.TreeItem?>
 
+<!--
+ * Vue principale pour l'application CodeGen
+ *
+ * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+ * Code partiellement généré par: OpenAi. (2023). ChatGPT (version 10 novembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
+-->
 
 <?import com.codegen.codegen.ControleurClasse?>
 <?import com.codegen.codegen.ControleurTypeNomIcones?>
@@ -36,27 +37,30 @@
   </padding>
 
   <top>
-  <MenuBar>
-    <Menu text="Projet">
-      <MenuItem fx:id="menuItemCreerProjet" text="Créer un projet"/>
-      <MenuItem fx:id="menuItemOuvrirProjet" text="Ouvrir un projet"/>
-      <MenuItem fx:id="menuItemExporterProjet" text="Exporter le projet"/>
-      <MenuItem fx:id="menuItemParametres" text="Paramètres"/>
-      <SeparatorMenuItem />
-      <MenuItem fx:id="menuItemFermerFenetre" text="Fermer l'application"/>
-    </Menu>
-    <Menu text="Classe">
-      <MenuItem fx:id="menuItemRenommerClasse" text="Renommer"/>
-      <MenuItem fx:id="menuItemAjouterImplementation" text="Ajouter une implémentation"/>
-      <MenuItem fx:id="menuItemAjouterHeritage" text="Ajouter un héritage"/>
-      <MenuItem fx:id="menuItemExporterClasse" text="Exporter la classe"/>
-      <MenuItem fx:id="menuItemSupprimerClasse" text="Supprimer la classe"/>
-    </Menu>
-    <Menu text="Ajouter">
-      <MenuItem fx:id="menuItemAjouterClasse" text="Ajouter Classe"/>
-      <MenuItem fx:id="menuItemAjouterAttribut" text="Ajouter Attribut"/>
-    </Menu>
-  </MenuBar>
+    <VBox spacing="5">
+      <MenuBar>
+        <Menu text="Projet">
+          <MenuItem fx:id="menuItemCreerProjet" text="Créer un projet"/>
+          <MenuItem fx:id="menuItemOuvrirProjet" text="Ouvrir un projet"/>
+          <MenuItem fx:id="menuItemExporterProjet" text="Exporter le projet"/>
+          <MenuItem fx:id="menuItemParametres" text="Paramètres"/>
+          <SeparatorMenuItem />
+          <MenuItem fx:id="menuItemFermerFenetre" text="Fermer l'application"/>
+        </Menu>
+        <Menu text="Classe">
+          <MenuItem fx:id="menuItemRenommerClasse" text="Renommer"/>
+          <MenuItem fx:id="menuItemAjouterImplementation" text="Ajouter une implémentation"/>
+          <MenuItem fx:id="menuItemAjouterHeritage" text="Ajouter un héritage"/>
+          <MenuItem fx:id="menuItemExporterClasse" text="Exporter la classe"/>
+          <MenuItem fx:id="menuItemSupprimerClasse" text="Supprimer la classe"/>
+        </Menu>
+        <Menu text="Ajouter">
+          <MenuItem fx:id="menuItemAjouterClasse" text="Ajouter Classe"/>
+          <MenuItem fx:id="menuItemAjouterAttribut" text="Ajouter Attribut"/>
+        </Menu>
+      </MenuBar>
+      <Label fx:id="labelNomProjet" text="Nom du Projet"/>
+    </VBox>
   </top>
 
   <center>
