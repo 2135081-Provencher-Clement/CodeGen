@@ -25,6 +25,11 @@
 <?import javafx.scene.control.TreeItem?>
 
 
+<?import com.codegen.codegen.ControleurClasse?>
+<?import com.codegen.codegen.ControleurTypeNomIcones?>
+
+<?import com.codegen.codegen.ControleurPropriete?>
+<?import com.codegen.codegen.ControleurMethode?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.codegen.codegen.PrincipaleControleur">
   <padding>
     <Insets left="5.0" right="5.0" top="5.0" bottom="5.0"/>
@@ -63,8 +68,7 @@
           <TreeItem />
         </TreeView>
         <VBox>
-          <Label text="Test 3"/>
-          <Label text="Test 4"/>
+          <ControleurClasse />
         </VBox>
       </SplitPane>
   </center>

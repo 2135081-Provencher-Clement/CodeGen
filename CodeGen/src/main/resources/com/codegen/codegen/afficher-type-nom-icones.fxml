@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ * Vue pour afficher un champs de type, un champs de nom
+ * et deux boutons (supprimer et modifier)
+ * Le controleur de cette vue s'appelle ControleurTypeNomIcones
+ *
+ * @author Cedric Garand - 2135500@etudiant.cegepvicto.ca
+-->
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml" stylesheets="@styles/feuille-styles.css">
+    <HBox spacing="10">
+        <TextField editable="false" fx:id="type" styleClass="element" />
+        <TextField editable="false" fx:id="nom" styleClass="element" />
+        <Button onAction="#modifier" styleClass="bouton" fx:id="boutonModifier" />
+        <Button onAction="#supprimer" styleClass="bouton" fx:id="boutonSupprimer" />
+    </HBox>
+</fx:root>

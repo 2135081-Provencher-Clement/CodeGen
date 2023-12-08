@@ -1,0 +1,64 @@
+.erreur {
+    -fx-fill: red;
+}
+
+.contourPropriete {
+    -fx-padding: 10;
+    -fx-alignment: center;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-style: solid;
+}
+
+.propriete {
+    -fx-padding: 10;
+}
+
+.element {
+    -fx-pref-width: 1000;
+    -fx-min-width: 100;
+    -fx-pref-height: 50;
+}
+
+.bouton {
+    -fx-padding: 10;
+}
+
+.texte {
+    -fx-wrap-text: true;
+}
+
+.nomClasse {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.conteneurComboBox {
+    -fx-spacing: 10px;
+}
+
+.comboBox {
+    -fx-pref-width: 200;
+    -fx-min-width: 100;
+}
+
+.comboBoxPropriete {
+    -fx-pref-width: 200;
+    -fx-min-width: 100;
+    -fx-pref-height: 50;
+}
+
+.titre {
+    -fx-alignment: center;
+}
+
+.conteneurTitre {
+    -fx-padding: 10;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-style: solid;
+}
+
+.conteneurClasse {
+    -fx-padding: 10;
+}

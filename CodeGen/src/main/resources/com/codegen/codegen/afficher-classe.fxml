@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ * Vue pour afficher une classe
+ * Le controleur de cette vue s'appelle AfficherClasse
+ *
+ * @author Cedric Garand - 2135500@etudiant.cegepvicto.ca
+-->
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<fx:root type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml" stylesheets="@styles/feuille-styles.css">
+    <ScrollPane hbarPolicy="NEVER" fitToWidth="true">
+        <VBox styleClass="conteneurClasse">
+            <StackPane styleClass="conteneurTitre">
+                <HBox styleClass="titre" spacing="5">
+                    <Text fx:id="nomClasse" styleClass="nomClasse">Chat</Text>
+                    <Text> : </Text>
+                    <Text fx:id="heritage">Animal</Text>
+                </HBox>
+                <HBox styleClass="conteneurComboBox">
+                    <ComboBox fx:id="visibiliteClasse" styleClass="comboBox" />
+                    <ComboBox fx:id="motCleClasse" styleClass="comboBox" />
+                    <Pane styleClass="comboBox"/>
+                    <Pane styleClass="comboBox"/>
+                    <Pane styleClass="comboBox"/>
+                </HBox>
+            </StackPane>
+            <VBox styleClass="contourPropriete" fx:id="conteneurPropriete">
+                <Text>Propriétés</Text>
+            </VBox>
+            <VBox styleClass="contourPropriete">
+                <Text>Contructeurs</Text>
+            </VBox>
+            <VBox styleClass="contourPropriete">
+                <Text>Méthodes</Text>
+                <VBox fx:id="contenueurMethode" />
+            </VBox>
+        </VBox>
+    </ScrollPane>
+</fx:root>
