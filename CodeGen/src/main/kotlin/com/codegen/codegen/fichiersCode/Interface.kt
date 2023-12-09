@@ -11,10 +11,12 @@ import java.security.InvalidParameterException
  * structure d'information pour une interface
  * une interface contient :
  * une visibilité
+ * un nom
  * une liste de propriété
  * une liste de méthodes
  *
  * @property visibilite la visibilite de l'interface
+ * @property nom le nom de la classe
  * @property proprietes la liste des propriétés de l'interface
  * @property methodes la liste des méthodes de l'interface
  *
@@ -27,14 +29,16 @@ class Interface {
      * Constructeur qui assigne tous les propriétés de l'interface
      *
      * @param visibilite La visibilité de la classe (ne doit pas être privée)
+     * @param nom Le nom de la classe
      * @param proprietes La liste des propriétés de l'interface (ces propriétés ne doivent pas être privées)
      * @param methodes La liste des méthodes de l'interface (ces méthodes ne doivent pas être privées)
      *
      * @author Clément Provencher
      */
-    constructor(visibilite: Visibilite, proprietes: List<Propriete>, methodes: List<Methode>)
+    constructor(visibilite: Visibilite, nom: String, proprietes: List<Propriete>, methodes: List<Methode>)
     {
         this.visibilite = visibilite
+        this.nom = nom
 
         proprietes.forEach{ propriete -> AjouterPropriete(propriete) }
         methodes.forEach { methode -> AjouterMethode(methode) }
@@ -57,6 +61,14 @@ class Interface {
             if(value == Visibilite.private)
                 throw InvalidParameterException("Une interface ne peut pas être privée")
 
+            field = value
+        }
+
+    /**
+     * Le nom de l'interface
+     */
+    var nom: String = ""
+        set(value) {
             field = value
         }
 
