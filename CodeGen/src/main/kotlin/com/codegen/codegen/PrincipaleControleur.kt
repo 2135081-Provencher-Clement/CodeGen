@@ -168,7 +168,7 @@ class PrincipaleControleur {
      * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
      */
     @FXML
-    private fun surRenommer() {
+    private fun surRenommerClasse() {
         val dialogue = TextInputDialog("Nouveau nom de classe")
         dialogue.headerText = "Renommer la classe"
         dialogue.contentText = "Nouveau nom de classe :"
@@ -176,6 +176,18 @@ class PrincipaleControleur {
         if (resultat.isPresent) {
             val nouveauNomClasse = resultat.get()
             // Renommez la classe en utilisant le nouveau nom nouveauNomClasse
+        }
+    }
+
+    @FXML
+    private fun surRenommerProjet() {
+        val dialogue = TextInputDialog("Nouveau nom de projet")
+        dialogue.headerText = "Renommer le projet"
+        dialogue.contentText = "Nouveau nom de projet"
+        val resultat = dialogue.showAndWait()
+        if (resultat.isPresent) {
+            val nouveauNomProjet = resultat.get()
+            initialiserNomDuProjet(nouveauNomProjet)
         }
     }
 

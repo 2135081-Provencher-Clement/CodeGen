@@ -54,7 +54,10 @@
           <MenuItem fx:id="menuItemAjouterAttribut" text="Ajouter Attribut"/>
         </Menu>
       </MenuBar>
-      <Label fx:id="labelNomProjet" text="Nom du Projet"/>
+      <Label
+              fx:id="etiquetteNomProjet"
+              onMouseClicked="#surRenommerProjet"
+      />
     </VBox>
   </top>
 
