@@ -179,6 +179,11 @@ class PrincipaleControleur {
         }
     }
 
+    /**
+     * Fonction pour ouvrir la fenêtre pour renommer un projet
+     *
+     * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+     */
     @FXML
     private fun surRenommerProjet() {
         val dialogue = TextInputDialog("Nouveau nom de projet")
