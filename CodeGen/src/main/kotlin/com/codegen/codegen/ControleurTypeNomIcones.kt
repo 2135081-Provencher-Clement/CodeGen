@@ -8,9 +8,20 @@ import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.layout.VBox
 
-//create controller extend VBox as a custom control
-//(typeParam: String, nomParam: String)
+/**
+ *  Classe du contrôleur pour afficher le type, le nom et deux boutons (modifier et supprimer)
+ *
+ *  @param typeParam le type de la variable/méthode
+ *  @param nomParam le nom de la variable/méthode
+ *
+ *  @author Cedric Garand - 2135500@etudiant.cegepvicto.ca
+ */
 class ControleurTypeNomIcones(typeParam: String, nomParam: String) : VBox() {
+    /**
+     * Variables des composants visuels pour afficher le type, le nom et deux boutons
+     *
+     * @author Cedric Garand - 2135500@etudiant.cegepvicto.ca
+     */
     @FXML
     private var type: TextField = TextField()
     @FXML
@@ -23,17 +34,21 @@ class ControleurTypeNomIcones(typeParam: String, nomParam: String) : VBox() {
     fun supprimer()= println("Supprimer!")
     @FXML
     fun modifier()= println("Modifier!")
-
+    /**
+     * Initialisation des valeurs de ce composant
+     *
+     * @author Cedric Garand - 2135500@etudiant.cegepvicto.ca
+     */
     init {
-        //load FXML file, and set CustomControl as root and controller
         FXMLLoader(javaClass.getResource("afficher-type-nom-icones.fxml")).apply {
-            //"this" point to FXMLLoader,but we need set CustomControl as root and controller,so,use this@CustomControl
             setRoot(this@ControleurTypeNomIcones)
             setController(this@ControleurTypeNomIcones)
             load()
         }
+        // Afficher les informations
         nom.text = nomParam
         type.text = typeParam
+        // Ajouter les images aux boutons
         val imageSupprimer = Image(javaClass.getResourceAsStream("images/supprimer.png"), 30.0, 30.0, false, false)
         val imageModifier = Image(javaClass.getResourceAsStream("images/modifier.png"), 30.0, 30.0, false, false)
         boutonSupprimer.graphic = ImageView(imageSupprimer)

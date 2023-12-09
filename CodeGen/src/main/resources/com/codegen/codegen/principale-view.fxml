@@ -71,8 +71,7 @@
           <TreeItem />
           <TreeItem />
         </TreeView>
-        <VBox>
-          <ControleurClasse />
+        <VBox fx:id="zoneAffichageClasse">
         </VBox>
       </SplitPane>
   </center>

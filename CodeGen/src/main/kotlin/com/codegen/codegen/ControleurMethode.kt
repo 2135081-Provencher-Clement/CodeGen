@@ -11,40 +11,57 @@ import javafx.scene.image.ImageView
 import javafx.scene.layout.HBox
 import javafx.scene.layout.VBox
 
-//create controller extend VBox as a custom control
-// (methode: Methode)
+/**
+ *  Classe du contrôleur pour afficher une méthode.
+ *
+ *  @param methode la méthode à afficher dans le composant visuel
+ *
+ *  @author Cedric Garand - 2135500@etudiant.cegepvicto.ca
+ */
 class ControleurMethode(methode: Methode) : VBox() {
+    /**
+     * Variables des composants visuels d'une méthode
+     *
+     * @author Cedric Garand - 2135500@etudiant.cegepvicto.ca
+     */
     @FXML
     private var visibilite: ComboBox<String> = ComboBox<String>()
     @FXML
     private var boutonAjouter: Button = Button()
     @FXML
-    fun ajouter()= println("Ajouter un param!")
+    fun ajouter() = println("Ajouter un param!")
     @FXML
     private var conteneurMethode: HBox = HBox()
     @FXML
     private var parametresMethode: VBox = VBox()
+
+    /**
+     * Initialisation des valeurs des composants visuels d'une méthode
+     *
+     * @author Cedric Garand - 2135500@etudiant.cegepvicto.ca
+     */
     init {
-        //load FXML file, and set CustomControl as root and controller
         FXMLLoader(javaClass.getResource("afficher-methode.fxml")).apply {
-            //"this" point to FXMLLoader,but we need set CustomControl as root and controller,so,use this@CustomControl
             setRoot(this@ControleurMethode)
             setController(this@ControleurMethode)
             load()
         }
+        // Ajout de l'entête de la méthode
+        conteneurMethode.children.add(
+            ControleurTypeNomIcones(methode.typeRetour, methode.nom)
+        )
+        // Ajout des paramètres de la méthode
+        for (parametre in methode.parametres) {
+            parametresMethode.children.add(
+                ControleurTypeNomIcones(parametre.type, parametre.nom)
+            )
+        }
+        // Ajout des visibilités possibles de la méthode
         visibilite.items = observableArrayList(
             listOf("private", "public", "protected")
         )
-        // SelectionModel pointe sur les éléments qui sont sélectionnés
-        visibilite.selectionModel.select("private")
-        val typeNomIcone = ControleurTypeNomIcones(methode.typeRetour, methode.nom)
-        conteneurMethode.children.add(typeNomIcone)
-//        val param = TypeNomIconesControleur("string", "param1")
-//        parametresMethode.children.add(param)
-        for (parametre in methode.parametres) {
-            val param = ControleurTypeNomIcones(parametre.type, parametre.nom)
-            parametresMethode.children.add(param)
-        }
+        visibilite.selectionModel.select(methode.visibilite.name)
+        // Image pour ajouter un paramètre
         val imageAjouter = Image(javaClass.getResourceAsStream("images/ajouter.png"), 50.0, 50.0, false, false)
         boutonAjouter.graphic = ImageView(imageAjouter)
     }

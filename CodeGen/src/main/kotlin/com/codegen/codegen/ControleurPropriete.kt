@@ -8,26 +8,42 @@ import javafx.scene.control.ComboBox
 import javafx.scene.layout.HBox
 import javafx.scene.layout.VBox
 
-//create controller extend VBox as a custom control
+/**
+ *  Classe du contrôleur pour afficher une propriété
+ *
+ *  @param propriete la propriété à afficher dans le composant visuel
+ *
+ *  @author Cedric Garand - 2135500@etudiant.cegepvicto.ca
+ */
 class ControleurPropriete(propriete: Propriete) : VBox() {
+    /**
+     * Variables des composants visuels d'une propriété
+     *
+     * @author Cedric Garand - 2135500@etudiant.cegepvicto.ca
+     */
     @FXML
     private var visibilite: ComboBox<String> = ComboBox<String>()
     @FXML
     private var conteneurPropriete: HBox = HBox()
+    /**
+     * Initialisation des valeurs des composants visuels d'une propriété
+     *
+     * @author Cedric Garand - 2135500@etudiant.cegepvicto.ca
+     */
     init {
-        //load FXML file, and set CustomControl as root and controller
         FXMLLoader(javaClass.getResource("afficher-propriete.fxml")).apply {
-            //"this" point to FXMLLoader,but we need set CustomControl as root and controller,so,use this@CustomControl
             setRoot(this@ControleurPropriete)
             setController(this@ControleurPropriete)
             load()
         }
+        // Ajout des visibilités possibles pour une propriété
         visibilite.items = observableArrayList(
             listOf("private", "public", "protected")
         )
-        // SelectionModel pointe sur les éléments qui sont sélectionnés
-        visibilite.selectionModel.select("private")
-        val typeNomIcone = ControleurTypeNomIcones(propriete.type, propriete.nom)
-        conteneurPropriete.children.add(typeNomIcone)
+        visibilite.selectionModel.select(propriete.visibilite.name)
+        // Ajout du type et du nom de la propriété
+        conteneurPropriete.children.add(
+            ControleurTypeNomIcones(propriete.type, propriete.nom)
+        )
     }
 }

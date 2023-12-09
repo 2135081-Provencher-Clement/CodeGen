@@ -2,11 +2,19 @@
     -fx-fill: red;
 }
 
-.contourPropriete {
+.conteneur {
     -fx-padding: 10;
     -fx-alignment: center;
     -fx-border-color: black;
     -fx-border-width: 1;
+    -fx-border-style: solid;
+}
+
+.conteneurExterieur {
+    -fx-padding: 10;
+    -fx-alignment: center;
+    -fx-border-color: black;
+    -fx-border-width: 3;
     -fx-border-style: solid;
 }
 
@@ -55,7 +63,7 @@
 .conteneurTitre {
     -fx-padding: 10;
     -fx-border-color: black;
-    -fx-border-width: 1;
+    -fx-border-width: 3;
     -fx-border-style: solid;
 }
 

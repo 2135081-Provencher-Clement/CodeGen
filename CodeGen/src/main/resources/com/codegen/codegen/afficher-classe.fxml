@@ -15,9 +15,8 @@
         <VBox styleClass="conteneurClasse">
             <StackPane styleClass="conteneurTitre">
                 <HBox styleClass="titre" spacing="5">
-                    <Text fx:id="nomClasse" styleClass="nomClasse">Chat</Text>
-                    <Text> : </Text>
-                    <Text fx:id="heritage">Animal</Text>
+                    <Text fx:id="nomClasse" styleClass="nomClasse" />
+                    <Text fx:id="heritage" />
                 </HBox>
                 <HBox styleClass="conteneurComboBox">
                     <ComboBox fx:id="visibiliteClasse" styleClass="comboBox" />
@@ -27,13 +26,13 @@
                     <Pane styleClass="comboBox"/>
                 </HBox>
             </StackPane>
-            <VBox styleClass="contourPropriete" fx:id="conteneurPropriete">
+            <VBox styleClass="conteneurExterieur" fx:id="conteneurPropriete">
                 <Text>Propriétés</Text>
             </VBox>
-            <VBox styleClass="contourPropriete">
+            <VBox styleClass="conteneurExterieur" fx:id="conteneurConstructeur">
                 <Text>Contructeurs</Text>
             </VBox>
-            <VBox styleClass="contourPropriete">
+            <VBox styleClass="conteneurExterieur">
                 <Text>Méthodes</Text>
                 <VBox fx:id="contenueurMethode" />
             </VBox>
