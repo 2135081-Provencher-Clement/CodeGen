@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ * Vue pour afficher une propriété
+ * Le controleur de cette vue s'appelle ControleurPropriete
+ *
+ * @author Cedric Garand - 2135500@etudiant.cegepvicto.ca
+-->
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ComboBox?>
+
+<fx:root type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml" stylesheets="@styles/feuille-styles.css">
+    <HBox styleClass="propriete" fx:id="conteneurPropriete" spacing="10">
+        <ComboBox fx:id="visibilite" styleClass="element"/>
+    </HBox>
+</fx:root>

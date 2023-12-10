@@ -2,12 +2,16 @@
 
 package com.codegen.codegen
 
+import com.codegen.codegen.composants.*
+import com.codegen.codegen.fichiersCode.Classe
+import com.codegen.codegen.fichiersCode.MotCleeClasse
 import javafx.application.Platform
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
 import javafx.scene.Parent
 import javafx.scene.Scene
 import javafx.scene.control.*
+import javafx.scene.layout.VBox
 import javafx.stage.FileChooser
 import javafx.stage.Stage
 
@@ -51,6 +55,14 @@ class PrincipaleControleur {
     @FXML
     private lateinit var etiquetteNomProjet: Label
 
+    /**
+     * Variable qui contient la zone d'affichage de la classe
+     *
+     * @author Cedric Garand - 2135500@etudiant.cegepvicto.ca
+     */
+    @FXML
+    private var zoneAffichageClasse: VBox = VBox()
+
 
     /**
      * Fonction d'initialisation des composants
@@ -92,6 +104,22 @@ class PrincipaleControleur {
 //        menuItemAjouterInterface.setOnAction {
 //            surAjouterClasse()
 //        }
+        // Définir ce qu'il y a dans la classe
+        // @author Cedric Garand - 2135500@etudiant.cegepvicto.ca
+        var propriete1 = Propriete(Visibilite.private, "string", "nom")
+        var propriete2 = Propriete(Visibilite.public, "string", "prenom")
+        var listeProprieteConstructeur = listOf(propriete1, propriete2)
+        var listePropriete = listOf(propriete1, propriete2)
+        var param1 = Parametre("string", "nom1");
+        var param2 = Parametre("string", "nom2");
+        var liste = listOf(param1, param2);
+        var uneMethode = Methode(Visibilite.private, "string", "FaireQQch", liste, true)
+        var methode2 = Methode(Visibilite.private, "string", "FaireQQch", liste, false)
+        var listeMethode = listOf(uneMethode, methode2)
+        var constructeur = Constructeur(Visibilite.public, listeProprieteConstructeur)
+        var listeConstructeur = listOf(constructeur)
+        val classe = Classe(Visibilite.public, MotCleeClasse.classique, listePropriete, listeMethode, listeConstructeur)
+        zoneAffichageClasse.children.add(ControleurClasse(classe))
     }
 
     /**
