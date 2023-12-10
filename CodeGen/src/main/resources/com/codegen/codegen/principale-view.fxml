@@ -42,6 +42,7 @@
         <Menu text="Projet">
           <MenuItem fx:id="menuItemCreerProjet" text="Créer un projet"/>
           <MenuItem fx:id="menuItemOuvrirProjet" text="Ouvrir un projet"/>
+          <MenuItem fx:id="menuItemEnregistrerProjet" text="Enregistrer le projet"/>
           <MenuItem fx:id="menuItemExporterProjet" text="Exporter le projet"/>
           <MenuItem fx:id="menuItemParametres" text="Paramètres"/>
           <SeparatorMenuItem />

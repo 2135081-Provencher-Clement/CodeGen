@@ -33,6 +33,8 @@ class PagePrincipaleControleur {
     @FXML
     private lateinit var menuItemOuvrirProjet: MenuItem
     @FXML
+    private lateinit var menuItemEnregistrerProjet: MenuItem
+    @FXML
     private lateinit var menuItemExporterProjet: MenuItem
     @FXML
     private lateinit var menuItemParametres: MenuItem
@@ -77,6 +79,9 @@ class PagePrincipaleControleur {
         }
         menuItemOuvrirProjet.setOnAction {
             surOuvrirProjet()
+        }
+        menuItemEnregistrerProjet.setOnAction {
+            //surEnregistrerProjet()
         }
         menuItemParametres.setOnAction {
             surParametres()
