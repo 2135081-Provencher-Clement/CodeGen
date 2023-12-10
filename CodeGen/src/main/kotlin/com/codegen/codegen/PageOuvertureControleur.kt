@@ -53,12 +53,13 @@ class PageOuvertureControleur {
             val nouvelleScene = Scene(chargeurFXML.load(), 800.0, 800.0)
 
             // Récupérer le contrôleur et passer le nom du projet
-            val controleur = chargeurFXML.getController<PrincipaleControleur>()
+            val controleur = chargeurFXML.getController<PagePrincipaleControleur>()
             controleur.initialiserNomDuProjet(nomProjet)
 
             // Afficher la nouvelle vue
             val sceneActuelle = boutonNouveauProjet.scene.window as Stage
             sceneActuelle.scene = nouvelleScene
+            sceneActuelle.isMaximized = true
         }
     }
 

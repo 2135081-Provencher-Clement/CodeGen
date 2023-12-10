@@ -31,7 +31,7 @@
 
 <?import com.codegen.codegen.ControleurPropriete?>
 <?import com.codegen.codegen.ControleurMethode?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.codegen.codegen.PrincipaleControleur">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.codegen.codegen.PagePrincipaleControleur">
   <padding>
     <Insets left="5.0" right="5.0" top="5.0" bottom="5.0"/>
   </padding>
@@ -47,16 +47,16 @@
           <SeparatorMenuItem />
           <MenuItem fx:id="menuItemFermerFenetre" text="Fermer l'application"/>
         </Menu>
+        <Menu text="Ajouter">
+          <MenuItem fx:id="menuItemAjouterClasse" text="Ajouter Classe"/>
+          <MenuItem fx:id="menuItemAjouterAttribut" text="Ajouter Attribut"/>
+        </Menu>
         <Menu text="Classe">
           <MenuItem fx:id="menuItemRenommerClasse" text="Renommer"/>
           <MenuItem fx:id="menuItemAjouterImplementation" text="Ajouter une implémentation"/>
           <MenuItem fx:id="menuItemAjouterHeritage" text="Ajouter un héritage"/>
           <MenuItem fx:id="menuItemExporterClasse" text="Exporter la classe"/>
           <MenuItem fx:id="menuItemSupprimerClasse" text="Supprimer la classe"/>
-        </Menu>
-        <Menu text="Ajouter">
-          <MenuItem fx:id="menuItemAjouterClasse" text="Ajouter Classe"/>
-          <MenuItem fx:id="menuItemAjouterAttribut" text="Ajouter Attribut"/>
         </Menu>
       </MenuBar>
       <Label

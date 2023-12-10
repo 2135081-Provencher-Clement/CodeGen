@@ -1,5 +1,3 @@
-// Fichier PrincipaleControleur.kt
-
 package com.codegen.codegen
 
 import com.codegen.codegen.composants.*
@@ -21,7 +19,7 @@ import javafx.stage.Stage
  *  @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
  *  Code partiellement généré par: OpenAi. (2023). ChatGPT (version 10 novembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
  */
-class PrincipaleControleur {
+class PagePrincipaleControleur {
 
     /**
      * Variables de l'application
@@ -104,6 +102,7 @@ class PrincipaleControleur {
 //        menuItemAjouterInterface.setOnAction {
 //            surAjouterClasse()
 //        }
+
         // Définir ce qu'il y a dans la classe
         // @author Cedric Garand - 2135500@etudiant.cegepvicto.ca
         var propriete1 = Propriete(Visibilite.private, "string", "nom")
@@ -150,7 +149,7 @@ class PrincipaleControleur {
      * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
      */
     @FXML
-    private fun surCreerProjet() {
+    private fun surCreerProjet() { //TODO: Faire fonctionner, enregistrer le projet lors de la création d'un nouveau?
         val dialogue = TextInputDialog("Nom du projet")
         dialogue.headerText = "Créer un nouveau projet"
         dialogue.contentText = "Nom du projet :"
