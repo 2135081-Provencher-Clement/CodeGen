@@ -22,19 +22,6 @@ class CodeGenApplication : Application() {
     override fun start(stagePrincipal: Stage) {
 
         /**
-         * Création de la fenêtre principale
-         *
-         * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
-         * Code partiellement généré par: Microsoft. (2023). Bing (version 28 novembre 2023) [Modèle massif de langage]. https://bing.com/chat
-         */
-//        val chargeurFXMLInterfacePrincipale = FXMLLoader(CodeGenApplication::class.java.getResource("principale-view.fxml"))
-//        val racinePrincipale = chargeurFXMLInterfacePrincipale.load<BorderPane>()
-//        val scenePrincipale = Scene(racinePrincipale)
-//        stagePrincipal.title = "CodeGen"
-//        stagePrincipal.scene = scenePrincipale
-//        stagePrincipal.show()
-
-        /**
          * Création de la fenêtre d'ouverture de projet
          *
          * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
