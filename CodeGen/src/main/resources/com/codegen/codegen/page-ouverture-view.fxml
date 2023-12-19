@@ -3,26 +3,33 @@
 <!--
   Fichier page-ouverture-view.fxml
   auteur : Francis Payan - 2131102@etudiant.cegepvicto.ca
+  Code partiellement généré par: OpenAi. (2023). ChatGPT (version 10 novembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
+
 -->
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<VBox alignment="CENTER"
-      spacing="20.0"
-      xmlns="http://javafx.com/javafx/8"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.codegen.codegen.PageOuvertureControleur">
+<AnchorPane xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.codegen.codegen.PageOuvertureControleur">
 
-  <Label fx:id="etiquetteBienvenue" text="Bienvenue !" />
+  <Label fx:id="etiquetteBienvenue"
+         text="Bienvenue !"
+         AnchorPane.topAnchor="20"/>
 
   <Button fx:id="boutonNouveauProjet"
           text="Nouveau Projet"
-          onAction="#cliquerSurNouveauProjet" />
+          onAction="#cliquerSurNouveauProjet"
+          AnchorPane.leftAnchor="100"
+          AnchorPane.bottomAnchor="100" />
 
   <Button fx:id="boutonOuvrirProjet"
           text="Ouvrir un projet existant"
-          onAction="#cliquerSurOuvrirProjet" />
-
-</VBox>
+          onAction="#cliquerSurOuvrirProjet"
+          AnchorPane.rightAnchor="60"
+          AnchorPane.bottomAnchor="100" />
+</AnchorPane>
