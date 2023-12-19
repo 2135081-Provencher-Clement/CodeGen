@@ -1,6 +1,9 @@
 /*
    * Fichier styles.css
    * Auteur : Francis Payan : - 2131102@etudiant.cegepvicto.ca
+   * Image de fond générées par Dalle
+   * Code partiellement généré par: OpenAi. (2023). ChatGPT (version 10 novembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
+
 */
 
 .root {
@@ -11,6 +14,28 @@
 }
 
 #boutonNouveauProjet, #boutonOuvrirProjet {
-    -fx-padding: 10px 20px 10px 20px;
-    -fx-margin-top: 20px;
+    -fx-padding: 15px 30px;
+    -fx-background-color: #2a2a2a; /* Couleur de fond des boutons */
+    -fx-text-fill: #ffffff; /* Couleur du texte */
+    -fx-font-size: 14px; /* Taille du texte */
+    -fx-border-radius: 5px; /* Arrondir les coins des boutons */
+    -fx-background-radius: 5px; /* Arrondir les coins du fond du bouton */
+    -fx-border-color: #4a4a4a; /* Couleur de la bordure */
+    -fx-border-width: 2px; /* Largeur de la bordure */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 5); /* Ombre du bouton */
+    -fx-font-weight: bold; /* Gras pour le texte */
 }
+
+#boutonNouveauProjet:hover, #boutonOuvrirProjet:hover {
+    -fx-background-color: #d26f00; /* Couleur de fond des boutons au survol */
+    -fx-cursor: hand; /* Curseur de la main au survol */
+}
+
+#boutonNouveauProjet {
+    -fx-alignment: center-left;
+}
+
+#boutonOuvrirProjet {
+    -fx-alignment: center-right;
+}
+

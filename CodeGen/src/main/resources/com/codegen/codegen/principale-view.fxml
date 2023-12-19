@@ -4,6 +4,8 @@
  *
  * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
  * Code partiellement généré par: OpenAi. (2023). ChatGPT (version 10 novembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
+ *
+ * Ajout du VBOX et du label pour le nom du projet par : Francis Payan - 2131102@etudiant.cegepvicto.ca
 -->
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
@@ -54,7 +56,7 @@
           <MenuItem fx:id="menuItemAjouterAttribut" text="Ajouter Attribut"/>
         </Menu>
       </MenuBar>
-      <Label fx:id="labelNomProjet" text="Nom du Projet"/>
+      <Label fx:id="etiquetteNomProjet" text="Nom du Projet"/>
     </VBox>
   </top>
 

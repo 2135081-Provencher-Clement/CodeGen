@@ -37,6 +37,7 @@ class PageOuvertureControleur {
     /**
      * Gère l'action de cliquer sur le bouton "Nouveau Projet".
      * Affiche une boîte de dialogue pour entrer le nom du projet et charge la vue du nouveau projet.
+     * Auteur: Francis Payan - 2131102@etudiant.cegepvicto.ca
      */
     @FXML
     private fun cliquerSurNouveauProjet() {
