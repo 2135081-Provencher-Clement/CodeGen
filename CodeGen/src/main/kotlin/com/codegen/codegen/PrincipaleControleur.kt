@@ -118,7 +118,7 @@ class PrincipaleControleur {
         var listeMethode = listOf(uneMethode, methode2)
         var constructeur = Constructeur(Visibilite.public, listeProprieteConstructeur)
         var listeConstructeur = listOf(constructeur)
-        val classe = Classe(Visibilite.public, MotCleeClasse.classique, listePropriete, listeMethode, listeConstructeur)
+        val classe = Classe(Visibilite.public, "Chat", MotCleeClasse.classique, listePropriete, listeMethode, listeConstructeur)
         zoneAffichageClasse.children.add(ControleurClasse(classe))
     }
 
