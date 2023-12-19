@@ -40,8 +40,9 @@ class CodeGenApplication : Application() {
          * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
          * Code partiellement généré par: Microsoft. (2023). Bing (version 28 novembre 2023) [Modèle massif de langage]. https://bing.com/chat
          */
-        val chargeurFXMLPageOuverture = FXMLLoader(CodeGenApplication::class.java.getResource("principale-view.fxml"))
-        val racineOuverture = chargeurFXMLPageOuverture.load<BorderPane>()
+
+        val chargeurFXMLPageOuverture = FXMLLoader(CodeGenApplication::class.java.getResource("page-ouverture-view.fxml"))
+        val racineOuverture = chargeurFXMLPageOuverture.load<VBox>()
         val stageOuverture = Stage()
         val sceneOuverture = Scene(racineOuverture, 800.0, 800.0)
         sceneOuverture.stylesheets.add("styles.css")
