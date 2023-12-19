@@ -13,4 +13,5 @@ module com.codegen.codegen {
     exports com.codegen.codegen;
     exports com.codegen.codegen.serializerPersonnalisee.composants;
     exports com.codegen.codegen.serializerPersonnalisee.fichiersCode;
+    exports com.codegen.codegen.serializerPersonnalisee.projet;
 }
