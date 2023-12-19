@@ -28,6 +28,7 @@ object ClasseSerializer : KSerializer<Classe> {
     override val descriptor: SerialDescriptor = buildClassSerialDescriptor("com.codegen.codegen.composants.Classe")
     {
         element("visibilite", Visibilite.serializer().descriptor)
+        element("nom", PrimitiveSerialDescriptor("nom", PrimitiveKind.STRING))
         element("motCleeClasse", MotCleeClasse.serializer().descriptor)
         element("proprietes", listSerialDescriptor(Propriete.serializer().descriptor))
         element("methodes", listSerialDescriptor(Methode.serializer().descriptor))
@@ -45,10 +46,11 @@ object ClasseSerializer : KSerializer<Classe> {
     override fun serialize(encoder: Encoder, value: Classe) {
         encoder.encodeStructure(descriptor) {
             encodeSerializableElement(descriptor, 0, Visibilite.serializer(), value.visibilite)
-            encodeSerializableElement(descriptor, 1, MotCleeClasse.serializer(), value.motCleeClasse)
-            encodeSerializableElement(descriptor, 2, ListSerializer(Propriete.serializer()), value.proprietes)
-            encodeSerializableElement(descriptor, 3, ListSerializer(Methode.serializer()), value.methodes)
-            encodeSerializableElement(descriptor, 4, ListSerializer(Constructeur.serializer()), value.constructeurs)
+            encodeStringElement(descriptor, 1, value.nom)
+            encodeSerializableElement(descriptor, 2, MotCleeClasse.serializer(), value.motCleeClasse)
+            encodeSerializableElement(descriptor, 3, ListSerializer(Propriete.serializer()), value.proprietes)
+            encodeSerializableElement(descriptor, 4, ListSerializer(Methode.serializer()), value.methodes)
+            encodeSerializableElement(descriptor, 5, ListSerializer(Constructeur.serializer()), value.constructeurs)
         }
     }
 
@@ -63,6 +65,7 @@ object ClasseSerializer : KSerializer<Classe> {
     override fun deserialize(decoder: Decoder): Classe {
         return  decoder.decodeStructure(descriptor) {
             var visibilite = Visibilite.private
+            var nom = ""
             var motCleeClasse = MotCleeClasse.classique
             var proprietes = mutableListOf<Propriete>()
             var methodes = mutableListOf<Methode>()
@@ -72,16 +75,17 @@ object ClasseSerializer : KSerializer<Classe> {
             while(true) {
                 when (val index = decodeElementIndex(descriptor)) {
                     0 -> visibilite = decodeSerializableElement(descriptor, 0, Visibilite.serializer())
-                    1 -> motCleeClasse = decodeSerializableElement(descriptor, 1, MotCleeClasse.serializer())
-                    2 -> proprietes = decodeSerializableElement(descriptor, 2, ListSerializer(Propriete.serializer())).toMutableList()
-                    3 -> methodes = decodeSerializableElement(descriptor, 3, ListSerializer(Methode.serializer())).toMutableList()
-                    4 -> constructeurs = decodeSerializableElement(descriptor, 3, ListSerializer(Constructeur.serializer())).toMutableList()
+                    1 -> nom = decodeStringElement(descriptor, 1)
+                    2 -> motCleeClasse = decodeSerializableElement(descriptor, 2, MotCleeClasse.serializer())
+                    3 -> proprietes = decodeSerializableElement(descriptor, 3, ListSerializer(Propriete.serializer())).toMutableList()
+                    4 -> methodes = decodeSerializableElement(descriptor, 4, ListSerializer(Methode.serializer())).toMutableList()
+                    5 -> constructeurs = decodeSerializableElement(descriptor, 5, ListSerializer(Constructeur.serializer())).toMutableList()
                     CompositeDecoder.DECODE_DONE -> break
                     else -> throw SerializationException("Index inconnu : $index")
                 }
             }
 
-            Classe(visibilite, motCleeClasse, proprietes, methodes, constructeurs)
+            Classe(visibilite, nom, motCleeClasse, proprietes, methodes, constructeurs)
         }
     }
 }
