@@ -13,7 +13,7 @@
     -fx-background-repeat: no-repeat;
 }
 
-#boutonNouveauProjet, #boutonOuvrirProjet {
+#boutonNouveauProjet, #boutonOuvrirProjet, #boutonTesterGenerationJson {
     -fx-padding: 15px 30px;
     -fx-background-color: #2a2a2a; /* Couleur de fond des boutons */
     -fx-text-fill: #ffffff; /* Couleur du texte */
@@ -22,12 +22,17 @@
     -fx-background-radius: 5px; /* Arrondir les coins du fond du bouton */
     -fx-border-color: #4a4a4a; /* Couleur de la bordure */
     -fx-border-width: 2px; /* Largeur de la bordure */
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 5); /* Ombre du bouton */
+    -fx-effect: dropshadow(three-pass-box, rgba(255, 191, 147, 0.8), 10, 0, 0, 5); /* Ombre du bouton */
     -fx-font-weight: bold; /* Gras pour le texte */
 }
 
 #boutonNouveauProjet:hover, #boutonOuvrirProjet:hover {
     -fx-background-color: #d26f00; /* Couleur de fond des boutons au survol */
+    -fx-cursor: hand; /* Curseur de la main au survol */
+}
+
+#boutonTesterGenerationJson:hover {
+    -fx-background-color: #34a1ff; /* Couleur de fond des boutons au survol */
     -fx-cursor: hand; /* Curseur de la main au survol */
 }
 
