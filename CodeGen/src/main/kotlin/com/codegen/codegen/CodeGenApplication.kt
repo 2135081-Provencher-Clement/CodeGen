@@ -1,11 +1,6 @@
 package com.codegen.codegen
 
 
-import com.codegen.codegen.composants.*
-import com.codegen.codegen.fichiersCode.Classe
-import com.codegen.codegen.fichiersCode.Interface
-import com.codegen.codegen.fichiersCode.MotCleeClasse
-import com.codegen.codegen.projet.Projet
 import javafx.application.Application
 import javafx.fxml.FXMLLoader
 import javafx.scene.Scene
@@ -16,8 +11,6 @@ import javafx.scene.layout.VBox
 import javafx.stage.Screen
 import javafx.stage.Stage
 import javafx.stage.StageStyle
-import java.io.File
-import java.nio.charset.Charset
 
 /**
  *  Classe de l'application de CodeGen
@@ -28,9 +21,6 @@ import java.nio.charset.Charset
  */
 class CodeGenApplication : Application() {
     override fun start(stagePrincipal: Stage) {
-
-//        exporter()
-
         /**
          * Création de la fenêtre principale
          *
@@ -61,8 +51,6 @@ class CodeGenApplication : Application() {
         stageOuverture.scene = sceneOuverture
         stageOuverture.show()
     }
-
-
 }
 
 fun main() {
