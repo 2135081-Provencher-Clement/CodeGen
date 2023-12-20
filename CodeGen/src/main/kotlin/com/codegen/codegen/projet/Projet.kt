@@ -5,41 +5,71 @@ import com.codegen.codegen.composants.Propriete
 import com.codegen.codegen.composants.Visibilite
 import com.codegen.codegen.fichiersCode.Classe
 import com.codegen.codegen.fichiersCode.Interface
+import com.codegen.codegen.serializerPersonnalisee.projet.ProjetSerializer
 import kotlinx.serialization.Serializable
 import java.security.InvalidParameterException
+import java.util.UUID
 
 /**
  * structure d'information pour un projet
  * un projet contient :
+ *  un uuid
+ *  un nom
  *  une liste de classes
  *  une liste d'interfaces
  *
+ * @property uuid l'identifiant unique du projet
+ * @property nom Le nom du projet
  * @property classes La liste des classes du projet
  * @property interfaces La liste des interfaces du projet
  *
  * @author Clément Provencher
  */
-@Serializable
+@Serializable(with = ProjetSerializer::class)
 class Projet {
 
     /**
      * Constructeur du projet qui assigne une valeur à chaque propriété du projet
+     * (sauf uuid qui est généré)
      *
+     * @param uuid L'identifiant unique du projet
+     * @param nom Le nom du projet
      * @param classes La liste des classes du projet
      * @param interfaces La liste des interfaces du projet
      *
      * @author Clément Provencher
      */
-    constructor(classes : List<Classe>, interfaces : List<Interface>)
+    constructor(uuid: UUID, nom : String, classes : List<Classe>, interfaces : List<Interface>)
     {
+        this.uuid = uuid
+        this.nom = nom
+
         classes.forEach { classe -> AjouterClasse(classe) }
         interfaces.forEach { interfacee -> AjouterInterface(interfacee) }
     }
 
     /**
      * Constructeur du projet qui laisse les propriétés à leur valeur par défaut
+     * génère aussi un uuid pour le projet
+     *
+     * @author Clément Provencher
      */
-    constructor()
+    constructor() {
+        uuid = UUID.randomUUID()
+    }
+
+    /**
+     * L'identifiant unique du projet
+     */
+    val uuid : UUID
+
+    /**
+     * Le nom du projet (ce qui sera affiché pour l'identifier)
+     */
+    var nom : String = ""
+        set(value) {
+            field = value
+        }
 
     /**
      * Liste des classes du projet

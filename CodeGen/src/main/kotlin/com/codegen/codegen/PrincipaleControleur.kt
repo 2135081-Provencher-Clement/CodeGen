@@ -17,6 +17,7 @@ import javafx.scene.layout.VBox
 import javafx.stage.FileChooser
 import javafx.stage.Stage
 import java.io.File
+import java.util.*
 
 /**
  *  Classe du contrôleur de l'interface principale.
@@ -118,23 +119,23 @@ class PrincipaleControleur {
 //        }
         // Définir ce qu'il y a dans la classe
         // @author Cedric Garand - 2135500@etudiant.cegepvicto.ca
-        var propriete1 = Propriete(Visibilite.public, "string", "nom")
-        var propriete2 = Propriete(Visibilite.public, "string", "prenom")
-        var listeProprieteConstructeur = listOf(propriete1, propriete2)
-        var listeProprieteConstructeur2 = listOf(propriete1)
-        var listePropriete = listOf(propriete1, propriete2)
-        var liste = listOf(Parametre("string", "nom1"), Parametre("string", "nom2"))
-        var uneMethode = Methode(Visibilite.public, "string", "FaireQQch", liste, true)
-        var methode2 = Methode(Visibilite.public, "string", "FaireQQchAutre", liste, false)
-        var listeMethode = listOf(uneMethode, methode2)
-        var constructeur = Constructeur(Visibilite.public, listeProprieteConstructeur)
-        var constructeur2 = Constructeur(Visibilite.public, listeProprieteConstructeur2)
-        var listeConstructeur = listOf(constructeur, constructeur2)
-        val classe = Classe(Visibilite.public, MotCleeClasse.classique, listePropriete, listeMethode, listeConstructeur)
+        val propriete1 = Propriete(Visibilite.public, "string", "nom")
+        val propriete2 = Propriete(Visibilite.public, "string", "prenom")
+        val listeProprieteConstructeur = listOf(propriete1, propriete2)
+        val listeProprieteConstructeur2 = listOf(propriete1)
+        val listePropriete = listOf(propriete1, propriete2)
+        val liste = listOf(Parametre("string", "nom1"), Parametre("string", "nom2"))
+        val uneMethode = Methode(Visibilite.public, "string", "FaireQQch", liste, true)
+        val methode2 = Methode(Visibilite.public, "string", "FaireQQchAutre", liste, false)
+        val listeMethode = listOf(uneMethode, methode2)
+        val constructeur = Constructeur(Visibilite.public, listeProprieteConstructeur)
+        val constructeur2 = Constructeur(Visibilite.public, listeProprieteConstructeur2)
+        val listeConstructeur = listOf(constructeur, constructeur2)
+        val classe = Classe(Visibilite.public, "Chat", MotCleeClasse.classique, listePropriete, listeMethode, listeConstructeur)
         val listeClasse = listOf(classe)
-        val uneInterface = Interface(Visibilite.public, listeProprieteConstructeur, listeMethode)
+        val uneInterface = Interface(Visibilite.public, "IVendable", listeProprieteConstructeur, listeMethode)
         val listeInterfaces = listOf(uneInterface)
-        projetActif = Projet(listeClasse, listeInterfaces)
+        projetActif = Projet(UUID.randomUUID(), "Projet-ferme", listeClasse, listeInterfaces)
         classeActive = projetActif.classes[0]
         zoneAffichageClasse.children.add(ControleurClasse(classe))
     }
@@ -374,15 +375,14 @@ class PrincipaleControleur {
      * @author Cedric Garand - 2135500@etudiant.cegepvicto.ca
      */
     fun exporterClasseCSharp(classe: Classe) {
-        val className = "Chat"
-        val fileName = "$className.cs"
-        var fileContent = "\n" + classe.visibilite + " class " + className + "\n{\n"
+        val fileName = classe.nom + ".cs"
+        var fileContent = "\n" + classe.visibilite + " class " + classe.nom + "\n{\n"
         for (propriete in classe.proprietes) {
             fileContent += "\t" + propriete.visibilite + " " + propriete.type + " " + propriete.nom + ";\n"
         }
         fileContent += "\n"
         for (constructeur in classe.constructeurs) {
-            fileContent += "\t" + constructeur.visibilite + " " + className + "("
+            fileContent += "\t" + constructeur.visibilite + " " + classe.nom + "("
             for (index in constructeur.proprietes.indices) {
                 fileContent += constructeur.proprietes[index].type + " " + constructeur.proprietes[index].nom
                 if (index + 1 != constructeur.proprietes.size) {
@@ -408,9 +408,8 @@ class PrincipaleControleur {
      * @author Cedric Garand - 2135500@etudiant.cegepvicto.ca
      */
     fun exporterInterfaceCSharp(uneInterface: Interface) {
-        val nomInterface = "IVendable"
-        val fileName = "$nomInterface.cs"
-        var fileContent = "\n" + uneInterface.visibilite +  " interface $nomInterface\n{\n"
+        val fileName =  uneInterface.nom + ".cs"
+        var fileContent = "\n" + uneInterface.visibilite +  " interface " + uneInterface.nom + "\n{\n"
         for (propriete in uneInterface.proprietes) {
             fileContent += "\t" + propriete.visibilite + " " + propriete.type + " " + propriete.nom + " { get; set; }\n"
         }

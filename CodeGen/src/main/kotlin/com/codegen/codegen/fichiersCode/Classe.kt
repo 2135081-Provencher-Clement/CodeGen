@@ -12,11 +12,13 @@ import java.security.InvalidParameterException
  * structure d'information pour une classe
  * une classe contient :
  *  une visibilité
+ *  un nom
  *  une liste de propriété
  *  une liste de méthodes
  *  une liste de constructeur
  *
  * @property visibilite la visibilite de la classe
+ * @property nom le nom de la classe
  * @property motCleeClasse le mot clée particulier de la classe (classique si pas de mot clée)
  * @property proprietes la liste des propriétés de la classe
  * @property methodes la liste des méthodes de la classe
@@ -31,6 +33,7 @@ class Classe
      * Constructeur de la classe qui assigne tous les propriétés
      *
      * @param visibilite La visibilité de la classe
+     * @param nom Le nom d ela classe
      * @param motCleeClasse Le mot clée particulier de la classe (classique si pas de mot clée)
      * @param proprietes La liste des propriétés de la classe
      * @param methodes La liste des méthodes de la classe
@@ -38,9 +41,10 @@ class Classe
      *
      * @author Clément Provencher
      */
-    constructor(visibilite: Visibilite, motCleeClasse: MotCleeClasse, proprietes: List<Propriete>, methodes: List<Methode>, constructeurs: List<Constructeur>)
+    constructor(visibilite: Visibilite, nom: String, motCleeClasse: MotCleeClasse, proprietes: List<Propriete>, methodes: List<Methode>, constructeurs: List<Constructeur>)
     {
         this.visibilite = visibilite
+        this.nom = nom
         this.motCleeClasse = motCleeClasse
 
         proprietes.forEach { propriete -> AjouterPropriete(propriete)}
@@ -64,6 +68,14 @@ class Classe
             if(value == Visibilite.private)
                 throw InvalidParameterException("Une classe ne peut pas être privée")
 
+            field = value
+        }
+
+    /**
+     * Le nom de la classe
+     */
+    var nom: String = ""
+        set(value) {
             field = value
         }
 
