@@ -32,4 +32,11 @@
           onAction="#cliquerSurOuvrirProjet"
           AnchorPane.rightAnchor="60"
           AnchorPane.bottomAnchor="100" />
+
+  <Button fx:id="boutonTesterGenerationJson"
+          text="Tester Génération JSON"
+          onAction="#cliquerSurTesterGenerationJson"
+          AnchorPane.rightAnchor="300"
+          AnchorPane.bottomAnchor="30" />
+
 </AnchorPane>
