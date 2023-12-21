@@ -4,6 +4,12 @@ import javafx.fxml.FXML
 import javafx.scene.control.TextInputDialog
 import javafx.stage.FileChooser
 
+/**
+ * Test d'une classe d'utilitaires pour l'application
+ *
+ * @author Alexandre del Fabbro - @2166311@etudiant.cegepvicto.ca
+ * Idée reçue de: OpenAi. (2023). ChatGPT (version du 17 décembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
+ */
 public class UtilitairesApplication {
 
     public fun surChoisirItemDansTreeView() {

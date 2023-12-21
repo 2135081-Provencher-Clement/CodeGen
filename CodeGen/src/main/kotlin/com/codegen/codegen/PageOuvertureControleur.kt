@@ -73,8 +73,11 @@ class PageOuvertureControleur {
             val nouvelleScene = Scene(chargeurFXML.load(), 800.0, 800.0)
 
             // Créer un projet avec une classe par défaut
+            // Je n'étais pas certain s'il fallait créer une classe par défaut ou non
             // @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
 //            val premiereClasse = Classe(Visibilite.public, "Ma classe", MotCleeClasse.classique, mutableListOf(), mutableListOf(), mutableListOf())
+            // Fin code
+
             val nouveauProjet = Projet(UUID.randomUUID(), nomProjet, mutableListOf(), mutableListOf())
 
             // Récupérer le contrôleur et passer le nom du projet

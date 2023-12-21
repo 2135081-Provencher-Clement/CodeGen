@@ -62,14 +62,11 @@
           <MenuItem fx:id="menuItemSupprimerClasse" text="Supprimer la classe"/>
         </Menu>
       </MenuBar>
-<<<<<<< HEAD:CodeGen/src/main/resources/com/codegen/codegen/page-principale-view.fxml
       <Label
               fx:id="etiquetteNomProjet"
               onMouseClicked="#surRenommerProjet"
       />
-=======
-      <Label fx:id="etiquetteNomProjet" text="Nom du Projet"/>
->>>>>>> dev:CodeGen/src/main/resources/com/codegen/codegen/principale-view.fxml
+
     </VBox>
   </top>
 

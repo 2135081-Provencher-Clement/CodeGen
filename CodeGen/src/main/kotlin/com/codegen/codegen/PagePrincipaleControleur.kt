@@ -25,8 +25,9 @@ import java.util.*
  */
 class PagePrincipaleControleur {
 
+
     /**
-     * Variables de l'application
+     * Variables du menu
      *
      * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
      */
@@ -56,8 +57,20 @@ class PagePrincipaleControleur {
     private lateinit var menuItemAjouterClasse: MenuItem
     @FXML
     private lateinit var menuItemAjouterAttribut: MenuItem
+
+    /**
+     * Variable de l'étique du nom du projet
+     *
+     * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+     */
     @FXML
     private lateinit var etiquetteNomProjet: Label
+
+    /**
+     * Variable de l'arborscence du projet
+     *
+     * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+     */
     @FXML
     private var arborescenceProjet: TreeView<String> = TreeView<String>()
 
@@ -123,27 +136,6 @@ class PagePrincipaleControleur {
 //            surAjouterClasse()
 //        }
 
-        // Définir ce qu'il y a dans la classe
-        // @author Cedric Garand - 2135500@etudiant.cegepvicto.ca
-//        val propriete1 = Propriete(Visibilite.public, "string", "nom")
-//        val propriete2 = Propriete(Visibilite.public, "string", "prenom")
-//        val listeProprieteConstructeur = listOf(propriete1, propriete2)
-//        val listeProprieteConstructeur2 = listOf(propriete1)
-//        val listePropriete = listOf(propriete1, propriete2)
-//        val liste = listOf(Parametre("string", "nom1"), Parametre("string", "nom2"))
-//        val uneMethode = Methode(Visibilite.public, "string", "FaireQQch", liste, true)
-//        val methode2 = Methode(Visibilite.public, "string", "FaireQQchAutre", liste, false)
-//        val listeMethode = listOf(uneMethode, methode2)
-//        val constructeur = Constructeur(Visibilite.public, listeProprieteConstructeur)
-//        val constructeur2 = Constructeur(Visibilite.public, listeProprieteConstructeur2)
-//        val listeConstructeur = listOf(constructeur, constructeur2)
-//        val classe = Classe(Visibilite.public, "Chat", MotCleeClasse.classique, listePropriete, listeMethode, listeConstructeur)
-//        val listeClasse = listOf(classe)
-//        val uneInterface = Interface(Visibilite.public, "IVendable", listeProprieteConstructeur, listeMethode)
-//        val listeInterfaces = listOf(uneInterface)
-//        projetActif = Projet(UUID.randomUUID(), "Projet-ferme", listeClasse, listeInterfaces)
-//        classeActive = projetActif.classes[0]
-//        zoneAffichageClasse.children.add(ControleurClasse(classe))
     }
 
 
@@ -180,7 +172,6 @@ class PagePrincipaleControleur {
                 zoneAffichageClasse.children.add(ControleurClasse(classe))
             }
         }
-//        zoneAffichageClasse.children.add(ControleurClasse(projet.classes[0]))
     }
 
     /**
@@ -201,6 +192,9 @@ class PagePrincipaleControleur {
         }
     }
 
+    /**
+     * Fonction pour initialiser une nouvelle classe d'exemple
+     */
     @FXML
     private fun initialisationNouvelleClasse(nomClasse: String) {
 
@@ -285,23 +279,6 @@ class PagePrincipaleControleur {
         stageParametres.show()
     }
 
-//    /**
-//     * Fonction pour ouvrir la fenêtre pour renommer une classe
-//     *
-//     * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
-//     */
-//    @FXML
-//    private fun surRenommerClasse() {
-//        val dialogue = TextInputDialog("Nouveau nom de classe")
-//        dialogue.headerText = "Renommer la classe"
-//        dialogue.contentText = "Nouveau nom de classe :"
-//        val resultat = dialogue.showAndWait()
-//        if (resultat.isPresent) {
-//            val nouveauNomClasse = resultat.get()
-//            // Renommez la classe en utilisant le nouveau nom nouveauNomClasse
-//        }
-//    }
-
     /**
      * Fonction pour ouvrir la fenêtre pour renommer un projet
      *
@@ -332,7 +309,7 @@ class PagePrincipaleControleur {
         val resultat = dialogue.showAndWait()
         if (resultat.isPresent) {
             val nomInterface = resultat.get()
-            // Ajoutez l'implémentation de l'interface nomInterface à la classe
+            // Ajouter l'implémentation de l'interface nomInterface à la classe
         }
     }
 

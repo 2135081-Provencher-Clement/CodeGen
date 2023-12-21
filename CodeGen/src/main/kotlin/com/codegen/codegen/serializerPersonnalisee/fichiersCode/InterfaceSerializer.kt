@@ -12,12 +12,6 @@ import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.descriptors.*
-<<<<<<< HEAD
-import kotlinx.serialization.descriptors.SerialDescriptor
-import kotlinx.serialization.descriptors.buildClassSerialDescriptor
-import kotlinx.serialization.descriptors.listSerialDescriptor
-=======
->>>>>>> dev
 import kotlinx.serialization.encoding.*
 
 
@@ -58,11 +52,6 @@ object InterfaceSerializer : KSerializer<Interface> {
             encodeStringElement(descriptor, 1, value.nom)
             encodeSerializableElement(descriptor, 2, ListSerializer(Propriete.serializer()), value.proprietes)
             encodeSerializableElement(descriptor, 3, ListSerializer(Methode.serializer()), value.methodes)
-<<<<<<< HEAD
-            encodeSerializableElement(descriptor, 1, ListSerializer(Propriete.serializer()), value.proprietes)
-            encodeSerializableElement(descriptor, 2, ListSerializer(Methode.serializer()), value.methodes)
-=======
->>>>>>> dev
         }
     }
 
