@@ -21,7 +21,6 @@ import javafx.stage.StageStyle
  */
 class CodeGenApplication : Application() {
     override fun start(stagePrincipal: Stage) {
-
         /**
          * Création de la fenêtre principale
          *
