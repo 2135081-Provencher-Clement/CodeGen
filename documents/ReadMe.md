@@ -1,0 +1,1 @@
+J'ai mis une image du tableau clickUp mais si tu veux avoir plus d'informations, je crois que tu as accès à tous nos clickUp
