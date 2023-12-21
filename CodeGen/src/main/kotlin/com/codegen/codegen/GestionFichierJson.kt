@@ -12,6 +12,7 @@ import java.io.IOException
  * Fonction pour écrire un objet ListeProjet dans un fichier JSON avec le nom spécifié en paramètre
  *
  * Auteur: Francis Payan - 2131102@etudiant.cegepvicto.ca
+ * Code partiellement généré par: OpenAi. (2023). ChatGPT (version 10 novembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
  *
  * @param json
  * @param nomFichier
@@ -28,7 +29,7 @@ fun ecrireJsonDansFichier(json: String, nomFichier: String) {
  * Fonction pour lire un fichier JSON et le convertir en objet ListeProjet
  *
  * Auteur: Francis Payan - 2131102@etudiant.cegepvicto.ca
- *
+ * Code partiellement généré par: OpenAi. (2023). ChatGPT (version 10 novembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
  * @param nomFichier
  * @return ListeProjet
  */

@@ -22,7 +22,7 @@ import kotlinx.serialization.json.Json
 import java.util.*
 
 
-/*
+/**
    * Classe du controleur de la page d'ouverture
    * Code partiellement généré par: OpenAi. (2023). ChatGPT (version 10 novembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
    *
@@ -43,6 +43,8 @@ class PageOuvertureControleur {
 
     /**
      * Affiche un message de bienvenue dans la page d'ouverture de l'application.
+     *
+     * Auteur: Francis Payan - 2131102@etudiant.cegepvicto.ca
      */
     @FXML
     fun initialiser() {
@@ -125,6 +127,8 @@ class PageOuvertureControleur {
      * Fonction pour tester la génération du fichier JSON à partir d'un objet Projet factice.
      *
      * Auteur: Francis Payan - 2131102@etudiant.cegepvicto.ca
+     * Code partiellement généré par: OpenAi. (2023). ChatGPT (version 10 novembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
+     *
      */
     private fun testerGenerationFichierJsonObjetProjet() {
         val projetTest = creerProjetPourTest() // Crée un objet Projet factice pour le test
@@ -139,7 +143,7 @@ class PageOuvertureControleur {
      * Crée un objet Projet pour le test.
      *
      * Auteur: Francis Payan - 2131102@etudiant.cegepvicto.ca
-     *
+     * Code partiellement généré par: OpenAi. (2023). ChatGPT (version 10 novembre 2023) [Modèle massif de langage]. https://chat.openai.com/chat
      * @return Un objet Projet factice pour le test.
      */
     private fun creerProjetPourTest(): Projet {
