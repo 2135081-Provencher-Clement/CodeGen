@@ -14,6 +14,7 @@ import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.descriptors.*
 import kotlinx.serialization.encoding.*
 
+
 /**
  * Serializer personnalisé pour la classe Interface
  * Transforme une instance de la classe Interface en Json, et vice-versa

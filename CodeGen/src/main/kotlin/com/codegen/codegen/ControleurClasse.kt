@@ -4,7 +4,10 @@ import com.codegen.codegen.fichiersCode.Classe
 import javafx.collections.FXCollections
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
+import javafx.scene.control.Button
 import javafx.scene.control.ComboBox
+import javafx.scene.control.Label
+import javafx.scene.control.TextInputDialog
 import javafx.scene.layout.VBox
 import javafx.scene.text.Text
 
@@ -15,7 +18,7 @@ import javafx.scene.text.Text
  *
  *  @author Cedric Garand - 2135500@etudiant.cegepvicto.ca
  */
-class ControleurClasse(classe: Classe) : VBox() {
+class ControleurClasse(var classe: Classe) : VBox() {
     /**
      * Variables des composants visuels de la classe
      *
@@ -26,7 +29,7 @@ class ControleurClasse(classe: Classe) : VBox() {
     @FXML
     private var motCleClasse: ComboBox<String> = ComboBox<String>()
     @FXML
-    private var nomClasse: Text = Text()
+    private var nomClasse: Button = Button()
     @FXML
     private var heritage: Text = Text()
     @FXML
@@ -70,7 +73,27 @@ class ControleurClasse(classe: Classe) : VBox() {
         )
         motCleClasse.selectionModel.select(classe.motCleeClasse.name)
         // Ajout du nom de la classe et de l'héritage
-        nomClasse.text = "Chat"
-        heritage.text = ": Animal"
+        nomClasse.text = classe.nom
+
+        heritage.text = " : " + "Aucun héritage" //TODO: Label de l'héritage
+    }
+
+    /**
+     * Fonction pour ouvrir la fenêtre pour renommer une classe
+     *
+     * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+     */
+    @FXML
+    fun surRenommerClasse() {
+        val dialog = TextInputDialog("Nouveau nom de la classe")
+        dialog.title = "Renommer la classe"
+        dialog.headerText = "Renommer la classe"
+        dialog.contentText = "Entrez le nouveau nom de la classe :"
+        val result = dialog.showAndWait()
+        if (result.isPresent) {
+            val nouveauNomClasse = result.get()
+            classe.nom = nouveauNomClasse
+            nomClasse.text = nouveauNomClasse
+        }
     }
 }

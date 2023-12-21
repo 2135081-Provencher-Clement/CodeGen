@@ -16,7 +16,11 @@ import java.security.InvalidParameterException
  * une liste de méthodes
  *
  * @property visibilite la visibilite de l'interface
+<<<<<<< HEAD
+ * @property nom le nom de l'interface
+=======
  * @property nom le nom de la classe
+>>>>>>> dev
  * @property proprietes la liste des propriétés de l'interface
  * @property methodes la liste des méthodes de l'interface
  *
@@ -29,7 +33,11 @@ class Interface {
      * Constructeur qui assigne tous les propriétés de l'interface
      *
      * @param visibilite La visibilité de la classe (ne doit pas être privée)
+<<<<<<< HEAD
+     * @param nom Le nom de l'interface
+=======
      * @param nom Le nom de la classe
+>>>>>>> dev
      * @param proprietes La liste des propriétés de l'interface (ces propriétés ne doivent pas être privées)
      * @param methodes La liste des méthodes de l'interface (ces méthodes ne doivent pas être privées)
      *

@@ -30,6 +30,7 @@ import java.util.*
  */
 class PageOuvertureControleur {
 
+
     lateinit var boutonTesterGenerationJson: Button
 
     @FXML
@@ -68,16 +69,26 @@ class PageOuvertureControleur {
 
         resultat.ifPresent { nomProjet ->
             // Charger la vue du nouveau projet
-            val chargeurFXML = FXMLLoader(CodeGenApplication::class.java.getResource("principale-view.fxml"))
+            val chargeurFXML = FXMLLoader(CodeGenApplication::class.java.getResource("page-principale-view.fxml"))
             val nouvelleScene = Scene(chargeurFXML.load(), 800.0, 800.0)
 
+            // Créer un projet avec une classe par défaut
+            // Je n'étais pas certain s'il fallait créer une classe par défaut ou non
+            // @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+//            val premiereClasse = Classe(Visibilite.public, "Ma classe", MotCleeClasse.classique, mutableListOf(), mutableListOf(), mutableListOf())
+            // Fin code
+
+            val nouveauProjet = Projet(UUID.randomUUID(), nomProjet, mutableListOf(), mutableListOf())
+
             // Récupérer le contrôleur et passer le nom du projet
-            val controleur = chargeurFXML.getController<PrincipaleControleur>()
+            val controleur = chargeurFXML.getController<PagePrincipaleControleur>()
             controleur.initialiserNomDuProjet(nomProjet)
+            controleur.initialiserProjet(nouveauProjet)
 
             // Afficher la nouvelle vue
             val sceneActuelle = boutonNouveauProjet.scene.window as Stage
             sceneActuelle.scene = nouvelleScene
+            sceneActuelle.isMaximized = true
         }
     }
 
@@ -86,10 +97,12 @@ class PageOuvertureControleur {
      *
      * Auteur: Francis Payan - 2131102@etudiant.cegepvicto.ca
      */
+
     @FXML
     private fun cliquerSurOuvrirProjet() {
         // Logique pour ouvrir un projet existant
     }
+
 
     /**
      * Gère l'action de cliquer sur le bouton "Tester Génération JSON".
@@ -123,6 +136,7 @@ class PageOuvertureControleur {
         println("Fichier JSON généré : $nomFichier")
     }
 
+
     /**
      * Fonction pour tester la génération du fichier JSON à partir d'un objet Projet factice.
      *
@@ -138,6 +152,7 @@ class PageOuvertureControleur {
         ecrireJsonDansFichier(jsonProjet, nomFichier) // Écrit les informations dans un fichier JSON
         println("Fichier JSON généré : $nomFichier")
     }
+
 
     /**
      * Crée un objet Projet pour le test.
@@ -164,6 +179,7 @@ class PageOuvertureControleur {
 
         return Projet(UUID.randomUUID(), "Projet Test", classes, interfaces)
     }
+
 
 
 }

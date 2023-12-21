@@ -63,7 +63,7 @@ object ClasseSerializer : KSerializer<Classe> {
      * @author Clément Provencher
      */
     override fun deserialize(decoder: Decoder): Classe {
-        return  decoder.decodeStructure(descriptor) {
+        return decoder.decodeStructure(descriptor) {
             var visibilite = Visibilite.private
             var nom = ""
             var motCleeClasse = MotCleeClasse.classique

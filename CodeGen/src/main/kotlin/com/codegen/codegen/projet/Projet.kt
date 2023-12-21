@@ -31,7 +31,6 @@ class Projet {
     /**
      * Constructeur du projet qui assigne une valeur à chaque propriété du projet
      * (sauf uuid qui est généré)
-     *
      * @param uuid L'identifiant unique du projet
      * @param nom Le nom du projet
      * @param classes La liste des classes du projet
@@ -39,11 +38,11 @@ class Projet {
      *
      * @author Clément Provencher
      */
+
     constructor(uuid: UUID, nom : String, classes : List<Classe>, interfaces : List<Interface>)
     {
         this.uuid = uuid
         this.nom = nom
-
         classes.forEach { classe -> AjouterClasse(classe) }
         interfaces.forEach { interfacee -> AjouterInterface(interfacee) }
     }
