@@ -2,6 +2,10 @@
 
 package com.codegen.codegen
 
+import com.codegen.codegen.composants.Visibilite
+import com.codegen.codegen.fichiersCode.Classe
+import com.codegen.codegen.fichiersCode.MotCleeClasse
+import com.codegen.codegen.projet.Projet
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
 import javafx.scene.Scene
@@ -49,12 +53,18 @@ class PageOuvertureControleur {
 
         resultat.ifPresent { nomProjet ->
             // Charger la vue du nouveau projet
-            val chargeurFXML = FXMLLoader(CodeGenApplication::class.java.getResource("principale-view.fxml"))
+            val chargeurFXML = FXMLLoader(CodeGenApplication::class.java.getResource("page-principale-view.fxml"))
             val nouvelleScene = Scene(chargeurFXML.load(), 800.0, 800.0)
+
+            // Créer un projet avec une classe par défaut
+            // @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+//            val premiereClasse = Classe(Visibilite.public, "Ma classe", MotCleeClasse.classique, mutableListOf(), mutableListOf(), mutableListOf())
+            val nouveauProjet = Projet(nomProjet, mutableListOf(), mutableListOf())
 
             // Récupérer le contrôleur et passer le nom du projet
             val controleur = chargeurFXML.getController<PagePrincipaleControleur>()
             controleur.initialiserNomDuProjet(nomProjet)
+            controleur.initialiserProjet(nouveauProjet)
 
             // Afficher la nouvelle vue
             val sceneActuelle = boutonNouveauProjet.scene.window as Stage

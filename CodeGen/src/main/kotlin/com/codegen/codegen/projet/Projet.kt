@@ -11,9 +11,11 @@ import java.security.InvalidParameterException
 /**
  * structure d'information pour un projet
  * un projet contient :
+ *  un nom
  *  une liste de classes
  *  une liste d'interfaces
  *
+ * @property nom le nom du projet
  * @property classes La liste des classes du projet
  * @property interfaces La liste des interfaces du projet
  *
@@ -25,13 +27,15 @@ class Projet {
     /**
      * Constructeur du projet qui assigne une valeur à chaque propriété du projet
      *
+     * @param nom Le nom du projet
      * @param classes La liste des classes du projet
      * @param interfaces La liste des interfaces du projet
      *
      * @author Clément Provencher
      */
-    constructor(classes : List<Classe>, interfaces : List<Interface>)
+    constructor(nom: String, classes : List<Classe>, interfaces : List<Interface>)
     {
+        this.nom = nom
         classes.forEach { classe -> AjouterClasse(classe) }
         interfaces.forEach { interfacee -> AjouterInterface(interfacee) }
     }
@@ -40,6 +44,14 @@ class Projet {
      * Constructeur du projet qui laisse les propriétés à leur valeur par défaut
      */
     constructor()
+
+    /**
+     * Le nom de la classe
+     */
+    var nom: String = ""
+        set(value) {
+            field = value
+        }
 
     /**
      * Liste des classes du projet

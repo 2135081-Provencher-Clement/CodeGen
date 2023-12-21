@@ -11,10 +11,12 @@ import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.builtins.ListSerializer
+import kotlinx.serialization.descriptors.*
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.descriptors.buildClassSerialDescriptor
 import kotlinx.serialization.descriptors.listSerialDescriptor
 import kotlinx.serialization.encoding.*
+
 
 /**
  * Serializer personnalisé pour la classe Interface
@@ -34,6 +36,7 @@ object InterfaceSerializer : KSerializer<Interface> {
     override val descriptor: SerialDescriptor = buildClassSerialDescriptor("com.codegen.codegen.composants.Interface")
     {
         element("visibilite", Visibilite.serializer().descriptor)
+        element("nom", PrimitiveSerialDescriptor("nom", PrimitiveKind.STRING))
         element("proprietes", listSerialDescriptor(Propriete.serializer().descriptor))
         element("methodes", listSerialDescriptor(Methode.serializer().descriptor))
     }
@@ -49,6 +52,9 @@ object InterfaceSerializer : KSerializer<Interface> {
     override fun serialize(encoder: Encoder, value: Interface) {
         encoder.encodeStructure(descriptor) {
             encodeSerializableElement(descriptor, 0, Visibilite.serializer(), value.visibilite)
+            encodeStringElement(descriptor, 1, value.nom)
+            encodeSerializableElement(descriptor, 2, ListSerializer(Propriete.serializer()), value.proprietes)
+            encodeSerializableElement(descriptor, 3, ListSerializer(Methode.serializer()), value.methodes)
             encodeSerializableElement(descriptor, 1, ListSerializer(Propriete.serializer()), value.proprietes)
             encodeSerializableElement(descriptor, 2, ListSerializer(Methode.serializer()), value.methodes)
         }
@@ -65,6 +71,7 @@ object InterfaceSerializer : KSerializer<Interface> {
     override fun deserialize(decoder: Decoder): Interface {
         return  decoder.decodeStructure(descriptor) {
             var visibilite = Visibilite.private
+            var nom = ""
             var proprietes = mutableListOf<Propriete>()
             var methodes = mutableListOf<Methode>()
 
@@ -72,14 +79,15 @@ object InterfaceSerializer : KSerializer<Interface> {
             while(true) {
                 when (val index = decodeElementIndex(descriptor)) {
                     0 -> visibilite = decodeSerializableElement(descriptor, 0, Visibilite.serializer())
-                    1 -> proprietes = decodeSerializableElement(descriptor, 2, ListSerializer(Propriete.serializer())).toMutableList()
-                    2 -> methodes = decodeSerializableElement(descriptor, 3, ListSerializer(Methode.serializer())).toMutableList()
+                    1 -> nom = decodeStringElement(descriptor, 1)
+                    2 -> proprietes = decodeSerializableElement(descriptor, 2, ListSerializer(Propriete.serializer())).toMutableList()
+                    3 -> methodes = decodeSerializableElement(descriptor, 3, ListSerializer(Methode.serializer())).toMutableList()
                     CompositeDecoder.DECODE_DONE -> break
                     else -> throw SerializationException("Index inconnu : $index")
                 }
             }
 
-            Interface(visibilite, proprietes, methodes)
+            Interface(visibilite, nom, proprietes, methodes)
         }
     }
 }

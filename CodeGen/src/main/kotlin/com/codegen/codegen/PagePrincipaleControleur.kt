@@ -3,6 +3,7 @@ package com.codegen.codegen
 import com.codegen.codegen.composants.*
 import com.codegen.codegen.fichiersCode.Classe
 import com.codegen.codegen.fichiersCode.MotCleeClasse
+import com.codegen.codegen.projet.Projet
 import javafx.application.Platform
 import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
@@ -54,6 +55,8 @@ class PagePrincipaleControleur {
     private lateinit var menuItemAjouterAttribut: MenuItem
     @FXML
     private lateinit var etiquetteNomProjet: Label
+    @FXML
+    private var arborescenceProjet: TreeView<String> = TreeView<String>()
 
     /**
      * Variable qui contient la zone d'affichage de la classe
@@ -107,6 +110,62 @@ class PagePrincipaleControleur {
 //        menuItemAjouterInterface.setOnAction {
 //            surAjouterClasse()
 //        }
+    }
+
+    /**
+     * Fonction pour initialiser le nom du projet dans l'interface principale du nouveau projet
+     *
+     * @author Francis Payan - 2131102@etudiant.cegepvicto.ca
+     *
+     * @param nomDuProjet Le nom du projet
+     */
+    fun initialiserNomDuProjet(nomDuProjet: String) {
+        etiquetteNomProjet.text = "Projet: $nomDuProjet"
+    }
+
+    /**
+     * Fonction pour ouvrir ou initialiser un projet dans l'interface principale
+     *
+     * @param projet Le projet
+     *
+     * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+     */
+    fun initialiserProjet(projet: Projet) {
+        initialiserNomDuProjet(projet.nom)
+        arborescenceProjet.root = TreeItem(projet.nom)
+
+        if(projet.classes.isEmpty() && projet.interfaces.isEmpty()) {
+            surAjouterClasse()
+        }
+        else {
+            for (classe in projet.classes) {
+                arborescenceProjet.root.children.add(TreeItem(classe.nom))
+                zoneAffichageClasse.children.add(ControleurClasse(classe))
+            }
+        }
+//        zoneAffichageClasse.children.add(ControleurClasse(projet.classes[0]))
+    }
+
+    /**
+     * Fonction pour l'ouverture de la fenêtre de création d'une classe au projet
+     *
+     * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+     */
+    @FXML
+    private fun surAjouterClasse() {
+        val dialogue = TextInputDialog("Nom de la nouvelle classe")
+        dialogue.headerText = "Ajouter une nouvelle classe"
+        dialogue.contentText = "Nom de la nouvelle classe :"
+        val resultat = dialogue.showAndWait()
+        if (resultat.isPresent) {
+            val nomNouvelleClasse = resultat.get()
+            initialisationNouvelleClasse(nomNouvelleClasse)
+            arborescenceProjet.root.children.add(TreeItem(nomNouvelleClasse))
+        }
+    }
+
+    @FXML
+    private fun initialisationNouvelleClasse(nomClasse: String) {
 
         // Définir ce qu'il y a dans la classe
         // @author Cedric Garand - 2135500@etudiant.cegepvicto.ca
@@ -122,19 +181,9 @@ class PagePrincipaleControleur {
         var listeMethode = listOf(uneMethode, methode2)
         var constructeur = Constructeur(Visibilite.public, listeProprieteConstructeur)
         var listeConstructeur = listOf(constructeur)
-        val classe = Classe(Visibilite.public, MotCleeClasse.classique, listePropriete, listeMethode, listeConstructeur)
+        val classe = Classe(Visibilite.public, nom = nomClasse, MotCleeClasse.classique, listePropriete, listeMethode, listeConstructeur)
         zoneAffichageClasse.children.add(ControleurClasse(classe))
-    }
 
-    /**
-     * Fonction pour initialiser le nom du projet dans l'interface principale du nouveau projet
-     *
-     * @author Francis Payan - 2131102@etudiant.cegepvicto.ca
-     *
-     * @param nomDuProjet Le nom du projet
-     */
-    fun initialiserNomDuProjet(nomDuProjet: String) {
-        etiquetteNomProjet.text = "Projet: $nomDuProjet"
     }
 
 
@@ -194,22 +243,22 @@ class PagePrincipaleControleur {
         stageParametres.show()
     }
 
-    /**
-     * Fonction pour ouvrir la fenêtre pour renommer une classe
-     *
-     * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
-     */
-    @FXML
-    private fun surRenommerClasse() {
-        val dialogue = TextInputDialog("Nouveau nom de classe")
-        dialogue.headerText = "Renommer la classe"
-        dialogue.contentText = "Nouveau nom de classe :"
-        val resultat = dialogue.showAndWait()
-        if (resultat.isPresent) {
-            val nouveauNomClasse = resultat.get()
-            // Renommez la classe en utilisant le nouveau nom nouveauNomClasse
-        }
-    }
+//    /**
+//     * Fonction pour ouvrir la fenêtre pour renommer une classe
+//     *
+//     * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
+//     */
+//    @FXML
+//    private fun surRenommerClasse() {
+//        val dialogue = TextInputDialog("Nouveau nom de classe")
+//        dialogue.headerText = "Renommer la classe"
+//        dialogue.contentText = "Nouveau nom de classe :"
+//        val resultat = dialogue.showAndWait()
+//        if (resultat.isPresent) {
+//            val nouveauNomClasse = resultat.get()
+//            // Renommez la classe en utilisant le nouveau nom nouveauNomClasse
+//        }
+//    }
 
     /**
      * Fonction pour ouvrir la fenêtre pour renommer un projet
@@ -299,22 +348,7 @@ class PagePrincipaleControleur {
         }
     }
 
-    /**
-     * Fonction pour l'ouverture de la fenêtre de création d'une classe au projet
-     *
-     * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
-     */
-    @FXML
-    private fun surAjouterClasse() {
-        val dialogue = TextInputDialog("Nom de la nouvelle classe")
-        dialogue.headerText = "Ajouter une nouvelle classe"
-        dialogue.contentText = "Nom de la nouvelle classe :"
-        val resultat = dialogue.showAndWait()
-        if (resultat.isPresent) {
-            val nouveauNomClasse = resultat.get()
-            // Ajoutez la nouvelle classe avec le nom nouveauNomClasse
-        }
-    }
+
 
     /**
      * Fonction pour l'ouverture de la fenêtre de création d'un interface au projet
