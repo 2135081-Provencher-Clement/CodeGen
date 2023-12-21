@@ -5,6 +5,7 @@ import javafx.application.Application
 import javafx.fxml.FXMLLoader
 import javafx.scene.Scene
 import javafx.scene.control.SplitPane
+import javafx.scene.layout.AnchorPane
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.VBox
 import javafx.stage.Screen
@@ -20,7 +21,6 @@ import javafx.stage.StageStyle
  */
 class CodeGenApplication : Application() {
     override fun start(stagePrincipal: Stage) {
-
         /**
          * Création de la fenêtre d'ouverture de projet
          *
@@ -29,7 +29,8 @@ class CodeGenApplication : Application() {
          */
 
         val chargeurFXMLPageOuverture = FXMLLoader(CodeGenApplication::class.java.getResource("page-ouverture-view.fxml"))
-        val racineOuverture = chargeurFXMLPageOuverture.load<VBox>()
+        val racineOuverture = chargeurFXMLPageOuverture.load<AnchorPane>()
+
         val stageOuverture = Stage()
         val sceneOuverture = Scene(racineOuverture, 800.0, 800.0)
         sceneOuverture.stylesheets.add("styles.css")

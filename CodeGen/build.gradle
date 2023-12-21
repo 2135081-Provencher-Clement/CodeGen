@@ -45,8 +45,8 @@ dependencies {
     exclude(group: 'org.openjfx')
   }
   implementation('org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0')
-
   testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+  testImplementation 'org.testng:testng:7.7.0'
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 
   implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1'

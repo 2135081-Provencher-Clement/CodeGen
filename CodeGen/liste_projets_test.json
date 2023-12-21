@@ -1,0 +1,7 @@
+{
+    "listeProjets": [
+        {"nom": "Projet 1", "description": "Description 1", "langage": "Kotlin"},
+        {"nom": "Projet 2", "description": "Description 2", "langage": "C#"}
+        // Autres projets ici
+    ]
+}
