@@ -66,6 +66,14 @@ class PagePrincipaleControleur {
     @FXML
     private var zoneAffichageClasse: VBox = VBox()
 
+    /**
+     * Variable qui définissent le projet et la classe active
+     *
+     * @author Cedric Garand - 2135500@etudiant.cegepvicto.ca
+     */
+    private lateinit var projetActif: Projet
+
+    private lateinit var classeActive: Classe
 
     /**
      * Fonction d'initialisation des composants
@@ -110,7 +118,32 @@ class PagePrincipaleControleur {
 //        menuItemAjouterInterface.setOnAction {
 //            surAjouterClasse()
 //        }
+
+        // Définir ce qu'il y a dans la classe
+        // @author Cedric Garand - 2135500@etudiant.cegepvicto.ca
+//        val propriete1 = Propriete(Visibilite.public, "string", "nom")
+//        val propriete2 = Propriete(Visibilite.public, "string", "prenom")
+//        val listeProprieteConstructeur = listOf(propriete1, propriete2)
+//        val listeProprieteConstructeur2 = listOf(propriete1)
+//        val listePropriete = listOf(propriete1, propriete2)
+//        val liste = listOf(Parametre("string", "nom1"), Parametre("string", "nom2"))
+//        val uneMethode = Methode(Visibilite.public, "string", "FaireQQch", liste, true)
+//        val methode2 = Methode(Visibilite.public, "string", "FaireQQchAutre", liste, false)
+//        val listeMethode = listOf(uneMethode, methode2)
+//        val constructeur = Constructeur(Visibilite.public, listeProprieteConstructeur)
+//        val constructeur2 = Constructeur(Visibilite.public, listeProprieteConstructeur2)
+//        val listeConstructeur = listOf(constructeur, constructeur2)
+//        val classe = Classe(Visibilite.public, "Chat", MotCleeClasse.classique, listePropriete, listeMethode, listeConstructeur)
+//        val listeClasse = listOf(classe)
+//        val uneInterface = Interface(Visibilite.public, "IVendable", listeProprieteConstructeur, listeMethode)
+//        val listeInterfaces = listOf(uneInterface)
+//        projetActif = Projet(UUID.randomUUID(), "Projet-ferme", listeClasse, listeInterfaces)
+//        classeActive = projetActif.classes[0]
+//        zoneAffichageClasse.children.add(ControleurClasse(classe))
     }
+
+
+
 
     /**
      * Fonction pour initialiser le nom du projet dans l'interface principale du nouveau projet
@@ -203,7 +236,7 @@ class PagePrincipaleControleur {
      * @author Alexandre del Fabbro - 2166311@etudiant.cegepvicto.ca
      */
     @FXML
-    private fun surCreerProjet() { //TODO: Faire fonctionner, enregistrer le projet lors de la création d'un nouveau?
+    private fun surCreerProjet() {
         val dialogue = TextInputDialog("Nom du projet")
         dialogue.headerText = "Créer un nouveau projet"
         dialogue.contentText = "Nom du projet :"
